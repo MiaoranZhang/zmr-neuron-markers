@@ -13,7 +13,10 @@ def validate(root=ROOT):
                 'assets/source_registry.json', 'assets/curated_panels.json', 'assets/panel_source_map.json',
                 'assets/curated_marker_assertions.tsv', 'assets/source_conflicts.tsv', 'assets/catalog_summary.json',
                 'references/resource-guide.md', 'references/data-contract.md', 'references/annotation-workflow.md',
-                'scripts/import_resources.py', 'scripts/audit_coverage.py', 'scripts/build_catalog.py']
+                'scripts/import_resources.py', 'scripts/audit_coverage.py', 'scripts/build_catalog.py',
+                'references/rulebook.md', 'references/rules-identity.md', 'references/rules-contextual.md',
+                'assets/rulebook_manifest.json', 'assets/rules/identity.json', 'assets/rules/contextual.json',
+                'scripts/review_rules.py']
     for name in required:
         if not (root / name).is_file():
             raise ValueError('Missing required package file: ' + name)
@@ -67,7 +70,15 @@ def validate(root=ROOT):
             raise ValueError('Catalog summary mismatch: ' + key)
     if summary['complete_upstream_catalogs_bundled'] or summary['expression_reference_downloaded']:
         raise ValueError('Unsupported acquisition/completeness claim')
+    from review_rules import validate_rules
+    rule_result = validate_rules(root=root)
+    manifest = json.loads((root / 'assets/rulebook_manifest.json').read_text(encoding='utf-8'))
+    if manifest['expected_n_rules'] != len(panels) or manifest['rescue_routes_validated'] != 0:
+        raise ValueError('Unsupported rule completeness or rescue validation claim')
+    if manifest['biological_classifier_validated'] or manifest['confidence_is_probability']:
+        raise ValueError('Review grades are not calibrated biological probabilities')
     return dict(status='PASS', **expected, biological_classifier_validated=False,
+                rulebook_version=manifest['rulebook_version'], rule_validation=rule_result,
                 note='Structural/source-trace validation; not held-out annotation accuracy')
 
 

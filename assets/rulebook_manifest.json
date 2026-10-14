@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.1",
+  "rulebook_version": "1.1.0",
+  "curation_date": "2026-10-15",
+  "rule_files": ["assets/rules/identity.json", "assets/rules/contextual.json"],
+  "scope": "One original review rule per existing curated panel; not an exhaustive adult-brain taxonomy",
+  "expected_n_rules": 37,
+  "validation_status": "curated_unbenchmarked",
+  "biological_classifier_validated": false,
+  "confidence_is_probability": false,
+  "gates": ["applicability", "data_quality", "discrimination", "conflict_review"],
+  "core_logic": "OR across routes; AND across all_of groups; OR within each group. Inputs are unit-specific reviewed expression evidence, not raw UMI booleans.",
+  "rescue_routes_validated": 0,
+  "program_high_is_identity_high": false,
+  "donor_replication_separate": true,
+  "independent_validation_separate": true,
+  "original_marker_catalog_unchanged": true
+}

@@ -66,3 +66,9 @@ python scripts/import_resources.py --source sctype --out local_imports
 导入器拒绝覆盖同名来源目录，固定 commit，写入原数据 SHA256、URL、检索日期、原规则和事实性 marker 行。输出默认语义是 LOCAL_REVIEW_ONLY。只有实际核验条款允许的衍生文件才可另行发布；本次 GitHub 发布排除整个 local_imports/source_cache。
 
 更新时另建日期/版本目录，比较上游差异、许可和语义，不静默替换旧规则。采用新增 marker 前，把对应 source_locator、来源物种和 evidence_family 记到自己的证据表。程序类别不得因为更新来源而自动升格为身份。
+
+## v1.1 判定规则的来源层级
+
+逐类型规则见 [规则总则](rulebook.md)。原有 74 个基因事实索引保持不变；新增的是核心/辅助/冲突用途和条件化审阅逻辑。机器规则的 `source_panel_ids` 关联原面板及逐基因来源，`core_routes.basis` 区分作者使用过的组合与本项目原创编辑的证据分组。源研究支持某个组合，不等于本项目在独立数据上验证了该规则，也不等于允许任意缺失补救。
+
+关于 HCRT/PMCH、TPH1/TPH2、PPP1R1B 等解释上的修订及原始论文，集中列于规则总则末节；这些文献没有被冒充为完整下载的新参考图谱。
