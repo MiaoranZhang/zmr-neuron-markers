@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.cache/
+source_cache/
+local_imports/
+private_inputs/
+analysis_outputs/
+*.rds
+*.RDS
+*.h5ad
+*.loom
+*.fastq*
+*.bam
+.env
+publication_receipt.json

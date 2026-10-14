@@ -1,0 +1,4 @@
+interface:
+  display_name: "ZMR 神经元 Marker 鉴定"
+  short_description: "成人脑神经元分层鉴定、来源追溯、脑区限制与冲突核验，保留不确定身份"
+  default_prompt: "使用 $zmr-neuron-markers，结合未整合表达、供者证据和匹配的人脑参考，核验神经元身份并保留未定细胞。"

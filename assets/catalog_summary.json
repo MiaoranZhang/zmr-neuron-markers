@@ -1,0 +1,18 @@
+{
+  "n_panels": 37,
+  "n_distinct_genes": 74,
+  "n_panel_gene_roles": 114,
+  "n_source_trace_rows": 128,
+  "categories": {
+    "lineage": 1,
+    "transmitter": 11,
+    "regional_subtype": 8,
+    "da_program": 4,
+    "neuropeptide_program": 5,
+    "non_neuronal_guard": 7,
+    "maturation_program": 1
+  },
+  "complete_upstream_catalogs_bundled": false,
+  "expression_reference_downloaded": false,
+  "curated_panel_validation": "source_trace_validation_only_not_classifier_accuracy"
+}
