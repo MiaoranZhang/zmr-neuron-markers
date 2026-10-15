@@ -1,22 +1,33 @@
 {
   "schema_version": "1.1",
-  "rulebook_version": "1.2.0",
+  "rulebook_version": "1.3.0",
   "identity_annotation_unit": "formal_cluster_or_subcluster",
   "per_cell_identity_assignment": false,
   "cell_identity_labels": "inherited_by_annotation_unit_id",
   "per_cell_expression_and_reference_role": "auxiliary_diagnostics_only",
   "curation_date": "2026-10-15",
-  "rule_files": ["assets/rules/identity.json", "assets/rules/contextual.json"],
+  "rule_files": [
+    "assets/rules/identity.json",
+    "assets/rules/contextual.json",
+    "assets/rules/study-programs.json"
+  ],
   "scope": "One original review rule per existing curated panel; not an exhaustive adult-brain taxonomy",
-  "expected_n_rules": 37,
+  "expected_n_rules": 39,
   "validation_status": "curated_unbenchmarked",
   "biological_classifier_validated": false,
   "confidence_is_probability": false,
-  "gates": ["applicability", "data_quality", "discrimination", "conflict_review"],
+  "gates": [
+    "applicability",
+    "data_quality",
+    "discrimination",
+    "conflict_review"
+  ],
   "core_logic": "OR across routes; AND across all_of groups; OR within each group. Inputs are unit-specific reviewed expression evidence, not raw UMI booleans.",
   "rescue_routes_validated": 0,
   "program_high_is_identity_high": false,
   "donor_replication_separate": true,
   "independent_validation_separate": true,
-  "original_marker_catalog_unchanged": true
+  "original_marker_catalog_unchanged": false,
+  "expected_n_genes": 77,
+  "marker_literature_table": "assets/marker_literature.tsv"
 }

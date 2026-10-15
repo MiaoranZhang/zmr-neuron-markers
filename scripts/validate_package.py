@@ -16,6 +16,8 @@ def validate(root=ROOT):
                 'scripts/import_resources.py', 'scripts/audit_coverage.py', 'scripts/build_catalog.py',
                 'references/rulebook.md', 'references/rules-identity.md', 'references/rules-contextual.md',
                 'assets/rulebook_manifest.json', 'assets/rules/identity.json', 'assets/rules/contextual.json',
+                'assets/rules/study-programs.json', 'assets/marker_literature.tsv', 'assets/literature_registry.json',
+                'references/marker-literature.md', 'references/rules-study-programs.md',
                 'scripts/review_rules.py']
     for name in required:
         if not (root / name).is_file():
@@ -61,6 +63,17 @@ def validate(root=ROOT):
             raise ValueError('Evidence family or version mismatch')
         if row['curation_type'] != 'original_review_panel_not_literal_author_rule':
             raise ValueError('Review panels misrepresented as literal source rules')
+    with (root / 'assets/marker_literature.tsv').open(encoding='utf-8') as stream:
+        literature = list(csv.DictReader(stream, delimiter='\t'))
+    trace_keys = {(r['panel_id'], r['gene_symbol_raw'], r['curated_role'], r['source_id']) for r in rows}
+    literature_keys = {(r['panel_id'], r['gene_symbol'], r['curated_role'], r['source_id']) for r in literature}
+    if trace_keys != literature_keys:
+        raise ValueError('Literature table does not cover all source-specific marker assertions')
+    for row in literature:
+        if not all(row.get(k) for k in ('title', 'authors', 'year', 'doi', 'source_locator', 'evidence_kind')):
+            raise ValueError('Incomplete marker literature reference')
+        if row['evidence_family'] != sources[row['source_id']]['evidence_family']:
+            raise ValueError('Literature evidence family mismatch')
     summary = json.loads((root / 'assets/catalog_summary.json').read_text(encoding='utf-8'))
     expected = dict(n_panels=len(panels), n_distinct_genes=len({r['gene_symbol_raw'] for r in rows}),
                     n_panel_gene_roles=len(roles), n_source_trace_rows=len(rows),

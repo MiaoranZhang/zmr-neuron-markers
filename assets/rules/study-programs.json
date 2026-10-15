@@ -1,0 +1,35 @@
+[
+  {
+    "id": "rit2-enriched-program",
+    "target_label": "RIT2-enriched neuronal expression program",
+    "level": "program",
+    "claim_kind": "program",
+    "scope": {"species": "human", "stage": "adult", "regions": ["midbrain", "substantia_nigra"]},
+    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
+    "core_routes": [{"id": "wang-rit2-enrichment", "all_of": [["RIT2"]], "basis": "source_expression_association:wang_2024; editorial_program_review_not_fixed_type", "note": "Wang原文的RIT2富集神经元有RNA、蛋白及外部队列支持；本规则只审阅程序，要求相对可比神经元富集、可信群体归属和供者证据，不按RIT2单阳性建立固定类型。"}],
+    "supporting": {"genes": ["RBFOX3", "SNAP25", "SYP", "MAP2", "NRGN"], "panel_ids": ["neuronal-background"], "use": "核验神经元背景；NRGN仅辅助。GALNTL6单独评估，不要求两基因共阳性，不由TH未检出推断TH生物学阴性。"},
+    "conflicts": [{"program": "neuronal_vs_oligodendroglial_source", "genes": ["PLP1", "MBP", "MOG", "SOX10"], "interpretation": "原文RIT2也可在非神经元群出现；必须确认神经元归属和群内一致性。单个髓鞘转录本不否决程序。", "action": "review_not_single_gene_veto"}],
+    "high_requires": ["父级神经元High，RIT2相对可比神经元的富集与检出比例有真实表达证据。", "信号不由少数异常值、单供者技术因素或混群解释；记录可评估供者和同细胞归属。", "RIT2与GALNTL6及TH/SLC6A3/SLC18A2的关系分别记录；High仅代表程序支持，不赋予固定细胞类型或疾病易损性。"],
+    "confidence_cap": "High",
+    "fallback": {"missing_core": "核心缺测或富集证据不足则保留可靠神经元身份及RIT2程序未定；辅助不替代RIT2。", "strong_conflict": "来源未明或群内混合时为程序Uncertain，不逐细胞改判身份。", "fallback_label": "RIT2 program unresolved"},
+    "rescue_routes": [], "validation_status": "curated_unbenchmarked",
+    "source_panel_ids": ["rit2-enriched-program", "neuronal-background", "oligo-guard"],
+    "notes": "来源为Wang et al. Science Advances 2024, doi:10.1126/sciadv.adi8287, Fig1C, Fig2, TableS2/C9。GSE184950查询与该研究共享数据，不能称独立验证；不直接等同作者C9。"
+  },
+  {
+    "id": "galntl6-associated-program",
+    "target_label": "GALNTL6-associated neuronal expression program",
+    "level": "program", "claim_kind": "program",
+    "scope": {"species": "human", "stage": "adult", "regions": ["midbrain", "substantia_nigra"]},
+    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
+    "core_routes": [{"id": "wang-galntl6-association", "all_of": [["GALNTL6"]], "basis": "source_expression_association:wang_2024; editorial_program_review_not_fixed_type", "note": "作者Fig1C/Fig4/TableS2显示C6及部分神经元亚群的GALNTL6表达；这是表达关联来源，不是已验证的固定类型特异性。"}],
+    "supporting": {"genes": ["RBFOX3", "SNAP25", "SYP", "MAP2", "NRGN"], "panel_ids": ["neuronal-background"], "use": "仅核验神经元背景。RIT2独立评估；没有预定义RIT2+GALNTL6双核心，也不由GALNTL6推断DA身份。"},
+    "conflicts": [{"program": "neuronal_vs_oligodendroglial_source", "genes": ["PLP1", "MBP", "MOG", "SOX10"], "interpretation": "核验信号来源、环境RNA和混群；群体富集与同细胞共表达分别描述。", "action": "review_not_single_gene_veto"}],
+    "high_requires": ["父级神经元High，GALNTL6相对可比神经元的富集及可信群体归属有证据。", "记录供者/数据集分层和检出比例，不能由少数异常点代表全簇。", "与RIT2及递质身份分别评估；不赋固定类型、作者簇号、投射或疾病易损性。"],
+    "confidence_cap": "High",
+    "fallback": {"missing_core": "缺测或富集不足时保留父身份及GALNTL6程序未定，NRGN/RIT2不能补齐核心。", "strong_conflict": "细胞来源或混群未解则程序Uncertain。", "fallback_label": "GALNTL6 program unresolved"},
+    "rescue_routes": [], "validation_status": "curated_unbenchmarked",
+    "source_panel_ids": ["galntl6-associated-program", "neuronal-background", "oligo-guard"],
+    "notes": "来源为Wang et al. Science Advances 2024, doi:10.1126/sciadv.adi8287, Fig1C, Fig4B/E/G, TableS2/C6及其子群；不把RIT2和GALNTL6视为同一必然共表达群。"
+  }
+]

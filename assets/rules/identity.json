@@ -4,21 +4,105 @@
     "target_label": "Neuron",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "curated-neuronal-concordance", "all_of": [["SNAP25", "SYP"], ["MAP2", "RBFOX3", "STMN2", "TUBB3"]], "basis": "editorial_combination_from_curated_panel", "note": "本库提出的分组证据组合，不是作者原规则或已验证分类器；每组至少一个supported证据，仍需全表达背景及竞争谱系核验。RBFOX3不是必要的单一门槛。"}],
-    "supporting": {"genes": [], "panel_ids": ["neuronal-background"], "use": "同一核心组的其余基因可提高一致性；不得把重复使用的同源证据当独立验证。"},
-    "conflicts": [
-      {"program": "coherent_oligodendroglial", "genes": ["SOX10", "PDGFRA", "PLP1", "MBP", "MOG"], "interpretation": "检查少突/OPC成套程序；零散髓鞘RNA不单独否决神经元。", "action": "review_not_single_gene_veto"},
-      {"program": "coherent_astroglial", "genes": ["AQP4", "GJA1", "ALDH1L1", "SLC1A2"], "interpretation": "比较星形胶质背景，审查同细胞共表达、环境RNA及混合簇。", "action": "review_not_single_gene_veto"},
-      {"program": "coherent_immune_or_vascular", "genes": ["TYROBP", "DOCK8", "CD163", "MRC1", "CLDN5", "PECAM1", "PDGFRB", "CSPG4"], "interpretation": "分别按免疫、内皮和周细胞面板检查，而不是把这八个基因混成一个布尔排除集。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "curated-neuronal-concordance",
+        "all_of": [
+          [
+            "SNAP25",
+            "SYP"
+          ],
+          [
+            "MAP2",
+            "RBFOX3",
+            "STMN2",
+            "TUBB3"
+          ]
+        ],
+        "basis": "editorial_combination_from_curated_panel",
+        "note": "本库提出的分组证据组合，不是作者原规则或已验证分类器；每组至少一个supported证据，仍需全表达背景及竞争谱系核验。RBFOX3不是必要的单一门槛。"
+      }
     ],
-    "high_requires": ["预定义核心组合在该鉴定单位有可信的一致表达支持。", "神经元整体表达背景可区分最相近胶质/免疫/血管候选；不能仅依赖两个孤立高值。", "簇级结论有细胞内或一致子群证据，不能由互不重叠的细胞群拼接核心组合。"],
+    "supporting": {
+      "genes": [
+        "NRGN"
+      ],
+      "panel_ids": [
+        "neuronal-background"
+      ],
+      "use": "NRGN adds supporting neuronal context from Wang 2024 Methods; it does not replace either existing core group or prove a transmitter identity. Other core-group genes provide concordance, not independent validation."
+    },
+    "conflicts": [
+      {
+        "program": "coherent_oligodendroglial",
+        "genes": [
+          "SOX10",
+          "PDGFRA",
+          "PLP1",
+          "MBP",
+          "MOG"
+        ],
+        "interpretation": "检查少突/OPC成套程序；零散髓鞘RNA不单独否决神经元。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "coherent_astroglial",
+        "genes": [
+          "AQP4",
+          "GJA1",
+          "ALDH1L1",
+          "SLC1A2"
+        ],
+        "interpretation": "比较星形胶质背景，审查同细胞共表达、环境RNA及混合簇。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "coherent_immune_or_vascular",
+        "genes": [
+          "TYROBP",
+          "DOCK8",
+          "CD163",
+          "MRC1",
+          "CLDN5",
+          "PECAM1",
+          "PDGFRB",
+          "CSPG4"
+        ],
+        "interpretation": "分别按免疫、内皮和周细胞面板检查，而不是把这八个基因混成一个布尔排除集。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "预定义核心组合在该鉴定单位有可信的一致表达支持。",
+      "神经元整体表达背景可区分最相近胶质/免疫/血管候选；不能仅依赖两个孤立高值。",
+      "簇级结论有细胞内或一致子群证据，不能由互不重叠的细胞群拼接核心组合。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "记录缺测与未检出的区别；有神经元倾向但组合不足时至多Moderate，不将辅助信号自动补成High。", "strong_conflict": "保留Uncertain或混合群审阅状态，定位双细胞/污染/簇异质性。", "fallback_label": "Neuron candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "记录缺测与未检出的区别；有神经元倾向但组合不足时至多Moderate，不将辅助信号自动补成High。",
+      "strong_conflict": "保留Uncertain或混合群审阅状态，定位双细胞/污染/簇异质性。",
+      "fallback_label": "Neuron candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["neuronal-background", "oligo-guard", "opc-guard", "astro-guard", "myeloid-guard", "macrophage-guard", "endothelial-guard", "pericyte-guard"],
+    "source_panel_ids": [
+      "neuronal-background",
+      "oligo-guard",
+      "opc-guard",
+      "astro-guard",
+      "myeloid-guard",
+      "macrophage-guard",
+      "endothelial-guard",
+      "pericyte-guard"
+    ],
     "notes": "High表示经审阅的证据充分程度，不是准确率。Siletti原NEUR是+RBFOX3；本库多基因组合是明确标注的编辑规则。"
   },
   {
@@ -26,24 +110,120 @@
     "target_label": "Dopaminergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
     "core_routes": [
-      {"id": "kamath-da-triad", "all_of": [["TH"], ["SLC6A3"], ["SLC18A2"]], "basis": "source_positive_combination:kamath_2022", "note": "保留Kamath成人黑质DA三联证据；跨脑区使用需匹配当地DA参考。作者簇级证据不能改成每个细胞三个基因UMI均大于0。"},
-      {"id": "siletti-da-triad", "all_of": [["TH"], ["DDC"], ["SLC6A3"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-DA.md", "note": "保留Siletti的独立来源路径；两条路径是OR关系，不要求四个基因同时检出。"}
+      {
+        "id": "kamath-da-triad",
+        "all_of": [
+          [
+            "TH"
+          ],
+          [
+            "SLC6A3"
+          ],
+          [
+            "SLC18A2"
+          ]
+        ],
+        "basis": "source_positive_combination:kamath_2022",
+        "note": "保留Kamath成人黑质DA三联证据；跨脑区使用需匹配当地DA参考。作者簇级证据不能改成每个细胞三个基因UMI均大于0。"
+      },
+      {
+        "id": "siletti-da-triad",
+        "all_of": [
+          [
+            "TH"
+          ],
+          [
+            "DDC"
+          ],
+          [
+            "SLC6A3"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-DA.md",
+        "note": "保留Siletti的独立来源路径；两条路径是OR关系，不要求四个基因同时检出。"
+      }
     ],
-    "supporting": {"genes": ["DDC", "SLC18A2"], "panel_ids": ["da-core"], "use": "在采用另一条路径时提供互补合成/囊泡证据；不是独立验证，也不能替代缺失的TH或SLC6A3。"},
+    "supporting": {
+      "genes": [
+        "DDC",
+        "SLC18A2"
+      ],
+      "panel_ids": [
+        "da-core"
+      ],
+      "use": "在采用另一条路径时提供互补合成/囊泡证据；不是独立验证，也不能替代缺失的TH或SLC6A3。"
+    },
     "conflicts": [
-      {"program": "noradrenergic", "genes": ["DBH", "TH", "DDC"], "interpretation": "成套去甲肾上腺素证据是DA的主要竞争解释；单个DBH弱信号先核查来源。", "action": "review_not_single_gene_veto"},
-      {"program": "adrenergic", "genes": ["PNMT", "DBH", "TH", "DDC"], "interpretation": "完整PNMT相关合成程序需比较肾上腺素能身份。", "action": "review_not_single_gene_veto"},
-      {"program": "additional_transmitter", "genes": ["GAD1", "GAD2", "SLC32A1", "SLC17A6", "SLC17A7", "SLC17A8"], "interpretation": "审查混合群、同细胞递质共程序与污染；共程序不自动否决DA，也不直接证明功能性共释放。", "action": "review_not_single_gene_veto"}
+      {
+        "program": "noradrenergic",
+        "genes": [
+          "DBH",
+          "TH",
+          "DDC"
+        ],
+        "interpretation": "成套去甲肾上腺素证据是DA的主要竞争解释；单个DBH弱信号先核查来源。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "adrenergic",
+        "genes": [
+          "PNMT",
+          "DBH",
+          "TH",
+          "DDC"
+        ],
+        "interpretation": "完整PNMT相关合成程序需比较肾上腺素能身份。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "additional_transmitter",
+        "genes": [
+          "GAD1",
+          "GAD2",
+          "SLC32A1",
+          "SLC17A6",
+          "SLC17A7",
+          "SLC17A8"
+        ],
+        "interpretation": "审查混合群、同细胞递质共程序与污染；共程序不自动否决DA，也不直接证明功能性共释放。",
+        "action": "review_not_single_gene_veto"
+      }
     ],
-    "high_requires": ["父级神经元身份High，且至少一条原始来源三联证据路径supported。", "递质合成、转运背景在该鉴定单位一致；匹配脑区参考能够区分去甲肾上腺素能/肾上腺素能候选。", "TH单阳性、DDC单阳性或SOX6/CALB1相关亚型信号均不得替代DA核心证据。"],
+    "high_requires": [
+      "父级神经元身份High，且至少一条原始来源三联证据路径supported。",
+      "递质合成、转运背景在该鉴定单位一致；匹配脑区参考能够区分去甲肾上腺素能/肾上腺素能候选。",
+      "TH单阳性、DDC单阳性或SOX6/CALB1相关亚型信号均不得替代DA核心证据。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "所有已登记核心路径均不完整且无预先验证的补救路径时保留DA candidate或父级神经元；上限Moderate。一条路径完整时不因另一条路径缺失而自动降级。", "strong_conflict": "暂停排他的DA标签，比较其他单胺类型或记录已核验的共程序；未解决时Uncertain。", "fallback_label": "Neuron: monoaminergic/DA candidate, unresolved"},
+    "fallback": {
+      "missing_core": "所有已登记核心路径均不完整且无预先验证的补救路径时保留DA candidate或父级神经元；上限Moderate。一条路径完整时不因另一条路径缺失而自动降级。",
+      "strong_conflict": "暂停排他的DA标签，比较其他单胺类型或记录已核验的共程序；未解决时Uncertain。",
+      "fallback_label": "Neuron: monoaminergic/DA candidate, unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["da-core", "neuronal-background", "noradrenergic", "adrenergic", "gaba-core", "glut-vglut1", "glut-vglut2", "glut-vglut3"],
+    "source_panel_ids": [
+      "da-core",
+      "neuronal-background",
+      "noradrenergic",
+      "adrenergic",
+      "gaba-core",
+      "glut-vglut1",
+      "glut-vglut2",
+      "glut-vglut3"
+    ],
     "notes": "High DA不自动支持黑质解剖亚区、投射、PD易损性或精细亚型。DBH/PNMT是本库情境冲突检查，不是Siletti NT-DA原始阴性项。"
   },
   {
@@ -51,23 +231,97 @@
     "target_label": "GABAergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
     "core_routes": [
-      {"id": "siletti-gaba1", "all_of": [["GAD1"], ["SLC32A1"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-GABA1.md", "note": "原规则另有-SLC6A5；其语义保存在冲突审阅中，不将未检出等同真阴性。"},
-      {"id": "siletti-gaba2", "all_of": [["GAD2"], ["SLC32A1"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-GABA2.md", "note": "GAD2路径可替代GAD1路径，是作者的替代规则，不是本库临时补救。"}
+      {
+        "id": "siletti-gaba1",
+        "all_of": [
+          [
+            "GAD1"
+          ],
+          [
+            "SLC32A1"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-GABA1.md",
+        "note": "原规则另有-SLC6A5；其语义保存在冲突审阅中，不将未检出等同真阴性。"
+      },
+      {
+        "id": "siletti-gaba2",
+        "all_of": [
+          [
+            "GAD2"
+          ],
+          [
+            "SLC32A1"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-GABA2.md",
+        "note": "GAD2路径可替代GAD1路径，是作者的替代规则，不是本库临时补救。"
+      }
     ],
-    "supporting": {"genes": ["GAD1", "GAD2"], "panel_ids": ["gaba-core"], "use": "两种GAD同时支持可增强合成程序一致性；第二种GAD不能在本规则中替代SLC32A1。"},
+    "supporting": {
+      "genes": [
+        "GAD1",
+        "GAD2"
+      ],
+      "panel_ids": [
+        "gaba-core"
+      ],
+      "use": "两种GAD同时支持可增强合成程序一致性；第二种GAD不能在本规则中替代SLC32A1。"
+    },
     "conflicts": [
-      {"program": "glycinergic_or_cotransmitter", "genes": ["SLC6A5", "SLC32A1"], "interpretation": "SLC6A5是原GABA规则的阴性标志，但GABA/甘氨酸共程序可存在；区分同细胞证据和混簇，不能机械排除。", "action": "review_not_single_gene_veto"},
-      {"program": "glutamatergic_or_mixed", "genes": ["SLC17A6", "SLC17A7", "SLC17A8"], "interpretation": "检查递质共程序、不同细胞混合和环境RNA，不将单个转运体直接视为双细胞。", "action": "review_not_single_gene_veto"}
+      {
+        "program": "glycinergic_or_cotransmitter",
+        "genes": [
+          "SLC6A5",
+          "SLC32A1"
+        ],
+        "interpretation": "SLC6A5是原GABA规则的阴性标志，但GABA/甘氨酸共程序可存在；区分同细胞证据和混簇，不能机械排除。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "glutamatergic_or_mixed",
+        "genes": [
+          "SLC17A6",
+          "SLC17A7",
+          "SLC17A8"
+        ],
+        "interpretation": "检查递质共程序、不同细胞混合和环境RNA，不将单个转运体直接视为双细胞。",
+        "action": "review_not_single_gene_veto"
+      }
     ],
-    "high_requires": ["父级神经元High且GAD1/SLC32A1或GAD2/SLC32A1路径成立。", "与甘氨酸能及谷氨酸相关竞争程序比较，冲突已有可审阅解释。", "High支持GABA表达身份，不单凭这些转录本推断实际抑制作用或功能性释放。"],
+    "high_requires": [
+      "父级神经元High且GAD1/SLC32A1或GAD2/SLC32A1路径成立。",
+      "与甘氨酸能及谷氨酸相关竞争程序比较，冲突已有可审阅解释。",
+      "High支持GABA表达身份，不单凭这些转录本推断实际抑制作用或功能性释放。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "只有GAD或只有SLC32A1时记录GABA-related candidate；无已验证替代路径，最高Moderate。", "strong_conflict": "未明确同细胞/混簇之前记录transmitter-unresolved；已证实表达共程序可分别报告两个程序。", "fallback_label": "Neuron: GABA-related / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "只有GAD或只有SLC32A1时记录GABA-related candidate；无已验证替代路径，最高Moderate。",
+      "strong_conflict": "未明确同细胞/混簇之前记录transmitter-unresolved；已证实表达共程序可分别报告两个程序。",
+      "fallback_label": "Neuron: GABA-related / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["gaba-core", "neuronal-background", "glycinergic", "glut-vglut1", "glut-vglut2", "glut-vglut3"],
+    "source_panel_ids": [
+      "gaba-core",
+      "neuronal-background",
+      "glycinergic",
+      "glut-vglut1",
+      "glut-vglut2",
+      "glut-vglut3"
+    ],
     "notes": "两条来源路径应保留各自ID。簇包含GAD1细胞和SLC32A1细胞并不等同每个细胞满足同一组合。"
   },
   {
@@ -75,20 +329,86 @@
     "target_label": "SLC17A7-associated glutamatergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-vglut1", "all_of": [["SLC17A7"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-VGLUT1.md", "note": "单转运体来源规则只构成必要证据入口；High还需要父级、匹配的整体表达背景和竞争类型检查。"}],
-    "supporting": {"genes": ["SNAP25", "SYP", "MAP2"], "panel_ids": ["neuronal-background"], "use": "确认神经元背景，不当作谷氨酸能特异性补救基因；与父级证据不独立。"},
-    "conflicts": [
-      {"program": "GABA_or_glycine", "genes": ["GAD1", "GAD2", "SLC32A1", "SLC6A5"], "interpretation": "逐程序核验递质冲突或共程序，不能合并成单基因排除阈值。", "action": "review_not_single_gene_veto"},
-      {"program": "monoaminergic_or_cholinergic", "genes": ["TH", "DDC", "SLC6A3", "CHAT", "SLC5A7"], "interpretation": "有其他完整递质程序时检查同细胞共表达与群内异质性。", "action": "review_not_single_gene_veto"}
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-vglut1",
+        "all_of": [
+          [
+            "SLC17A7"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-VGLUT1.md",
+        "note": "单转运体来源规则只构成必要证据入口；High还需要父级、匹配的整体表达背景和竞争类型检查。"
+      }
     ],
-    "high_requires": ["神经元父级High；SLC17A7信号可信且在该鉴定单位有一致性，不能由少量异常值驱动。", "整体表达背景与匹配物种/脑区的谷氨酸能参考一致，并有竞争递质程序比较记录。", "仅此单基因阳性、没有整体背景对照时最高Moderate。"],
+    "supporting": {
+      "genes": [
+        "SNAP25",
+        "SYP",
+        "MAP2"
+      ],
+      "panel_ids": [
+        "neuronal-background"
+      ],
+      "use": "确认神经元背景，不当作谷氨酸能特异性补救基因；与父级证据不独立。"
+    },
+    "conflicts": [
+      {
+        "program": "GABA_or_glycine",
+        "genes": [
+          "GAD1",
+          "GAD2",
+          "SLC32A1",
+          "SLC6A5"
+        ],
+        "interpretation": "逐程序核验递质冲突或共程序，不能合并成单基因排除阈值。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "monoaminergic_or_cholinergic",
+        "genes": [
+          "TH",
+          "DDC",
+          "SLC6A3",
+          "CHAT",
+          "SLC5A7"
+        ],
+        "interpretation": "有其他完整递质程序时检查同细胞共表达与群内异质性。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High；SLC17A7信号可信且在该鉴定单位有一致性，不能由少量异常值驱动。",
+      "整体表达背景与匹配物种/脑区的谷氨酸能参考一致，并有竞争递质程序比较记录。",
+      "仅此单基因阳性、没有整体背景对照时最高Moderate。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "保留Neuron: transmitter unresolved；泛神经元基因不能补成谷氨酸能身份。", "strong_conflict": "记录mixed/unresolved transmitter并审阅；解释清楚的共程序可保留非排他表述。", "fallback_label": "Neuron: SLC17A7-associated candidate / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "保留Neuron: transmitter unresolved；泛神经元基因不能补成谷氨酸能身份。",
+      "strong_conflict": "记录mixed/unresolved transmitter并审阅；解释清楚的共程序可保留非排他表述。",
+      "fallback_label": "Neuron: SLC17A7-associated candidate / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["glut-vglut1", "neuronal-background", "gaba-core", "glycinergic", "da-core", "cholinergic"],
+    "source_panel_ids": [
+      "glut-vglut1",
+      "neuronal-background",
+      "gaba-core",
+      "glycinergic",
+      "da-core",
+      "cholinergic"
+    ],
     "notes": "不据此推断皮层层次、投射类型、脑区或独占的功能性兴奋性身份。"
   },
   {
@@ -96,20 +416,86 @@
     "target_label": "SLC17A6-associated glutamatergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-vglut2", "all_of": [["SLC17A6"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-VGLUT2.md", "note": "来源单转运体规则不是独立充分判定条件；High必须结合父级与匹配整体背景。"}],
-    "supporting": {"genes": ["SNAP25", "SYP", "MAP2"], "panel_ids": ["neuronal-background"], "use": "提供神经元背景，不替代SLC17A6，也不能与父级重复计为独立验证。"},
-    "conflicts": [
-      {"program": "GABA_or_glycine", "genes": ["GAD1", "GAD2", "SLC32A1", "SLC6A5"], "interpretation": "核查各递质程序在相同细胞中的关系及群内混合。", "action": "review_not_single_gene_veto"},
-      {"program": "monoaminergic_or_cholinergic", "genes": ["TH", "DDC", "SLC6A3", "CHAT", "SLC5A7"], "interpretation": "DA等类型可出现额外递质程序；不能看到SLC17A6就覆盖已支持的父类型。", "action": "review_not_single_gene_veto"}
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-vglut2",
+        "all_of": [
+          [
+            "SLC17A6"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-VGLUT2.md",
+        "note": "来源单转运体规则不是独立充分判定条件；High必须结合父级与匹配整体背景。"
+      }
     ],
-    "high_requires": ["神经元父级High且SLC17A6证据可信、非少数异常细胞驱动。", "匹配成人脑区的整体表达参考支持谷氨酸能身份，且竞争程序审阅通过。", "只有单marker而没有整体表达背景比较时上限Moderate；High也不宣称递质独占性。"],
+    "supporting": {
+      "genes": [
+        "SNAP25",
+        "SYP",
+        "MAP2"
+      ],
+      "panel_ids": [
+        "neuronal-background"
+      ],
+      "use": "提供神经元背景，不替代SLC17A6，也不能与父级重复计为独立验证。"
+    },
+    "conflicts": [
+      {
+        "program": "GABA_or_glycine",
+        "genes": [
+          "GAD1",
+          "GAD2",
+          "SLC32A1",
+          "SLC6A5"
+        ],
+        "interpretation": "核查各递质程序在相同细胞中的关系及群内混合。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "monoaminergic_or_cholinergic",
+        "genes": [
+          "TH",
+          "DDC",
+          "SLC6A3",
+          "CHAT",
+          "SLC5A7"
+        ],
+        "interpretation": "DA等类型可出现额外递质程序；不能看到SLC17A6就覆盖已支持的父类型。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High且SLC17A6证据可信、非少数异常细胞驱动。",
+      "匹配成人脑区的整体表达参考支持谷氨酸能身份，且竞争程序审阅通过。",
+      "只有单marker而没有整体表达背景比较时上限Moderate；High也不宣称递质独占性。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "核心缺测/未检出分别记录；无法由本规则定名时回到父级，不用泛神经元基因替代。", "strong_conflict": "先保留transmitter-unresolved或经证实的非排他共程序描述。", "fallback_label": "Neuron: SLC17A6-associated candidate / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "核心缺测/未检出分别记录；无法由本规则定名时回到父级，不用泛神经元基因替代。",
+      "strong_conflict": "先保留transmitter-unresolved或经证实的非排他共程序描述。",
+      "fallback_label": "Neuron: SLC17A6-associated candidate / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["glut-vglut2", "neuronal-background", "gaba-core", "glycinergic", "da-core", "cholinergic"],
+    "source_panel_ids": [
+      "glut-vglut2",
+      "neuronal-background",
+      "gaba-core",
+      "glycinergic",
+      "da-core",
+      "cholinergic"
+    ],
     "notes": "SLC17A6不单独指定中脑亚型、投射或实际谷氨酸释放功能。"
   },
   {
@@ -117,17 +503,77 @@
     "target_label": "SLC17A8-associated neuronal program",
     "level": "program",
     "claim_kind": "program",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-vglut3-program", "all_of": [["SLC17A8"]], "basis": "source_positive_marker:siletti_rules:Human_adult/Neurotransmission/NT-VGLUT3.md;editorial_claim_restriction", "note": "保留来源marker，但把本库可支持的结论限制为程序，不复用来源名称推成排他的谷氨酸能类型。"}],
-    "supporting": {"genes": ["SNAP25", "SYP", "MAP2"], "panel_ids": ["neuronal-background"], "use": "确认信号来自可信神经元单位；只支持背景，不替代核心。"},
-    "conflicts": [{"program": "multiple_transmitter_context", "genes": ["GAD1", "GAD2", "SLC32A1", "CHAT", "SLC5A7", "TPH2", "FEV", "DDC"], "interpretation": "这些程序与SLC17A8不必互斥；目的为确定表达归属及排查混合，不把共程序当排除项。", "action": "review_not_single_gene_veto"}],
-    "high_requires": ["神经元父级High，SLC17A8表达具有可信来源和该单位一致性。", "报告限定为SLC17A8-associated program，并注明原有递质身份及共程序审阅结果。", "High仅描述程序证据充分，不能转写为High exclusive glutamatergic identity。"],
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-vglut3-program",
+        "all_of": [
+          [
+            "SLC17A8"
+          ]
+        ],
+        "basis": "source_positive_marker:siletti_rules:Human_adult/Neurotransmission/NT-VGLUT3.md;editorial_claim_restriction",
+        "note": "保留来源marker，但把本库可支持的结论限制为程序，不复用来源名称推成排他的谷氨酸能类型。"
+      }
+    ],
+    "supporting": {
+      "genes": [
+        "SNAP25",
+        "SYP",
+        "MAP2"
+      ],
+      "panel_ids": [
+        "neuronal-background"
+      ],
+      "use": "确认信号来自可信神经元单位；只支持背景，不替代核心。"
+    },
+    "conflicts": [
+      {
+        "program": "multiple_transmitter_context",
+        "genes": [
+          "GAD1",
+          "GAD2",
+          "SLC32A1",
+          "CHAT",
+          "SLC5A7",
+          "TPH2",
+          "FEV",
+          "DDC"
+        ],
+        "interpretation": "这些程序与SLC17A8不必互斥；目的为确定表达归属及排查混合，不把共程序当排除项。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High，SLC17A8表达具有可信来源和该单位一致性。",
+      "报告限定为SLC17A8-associated program，并注明原有递质身份及共程序审阅结果。",
+      "High仅描述程序证据充分，不能转写为High exclusive glutamatergic identity。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "程序未支持或不可评估；保留父级身份。", "strong_conflict": "如来源归属未解决则该程序至多Moderate/Uncertain；不改动已可靠的其他身份。", "fallback_label": "Neuron; SLC17A8 program unresolved"},
+    "fallback": {
+      "missing_core": "程序未支持或不可评估；保留父级身份。",
+      "strong_conflict": "如来源归属未解决则该程序至多Moderate/Uncertain；不改动已可靠的其他身份。",
+      "fallback_label": "Neuron; SLC17A8 program unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["glut-vglut3", "neuronal-background", "gaba-core", "cholinergic", "serotonergic"],
+    "source_panel_ids": [
+      "glut-vglut3",
+      "neuronal-background",
+      "gaba-core",
+      "cholinergic",
+      "serotonergic"
+    ],
     "notes": "程序并存不等于功能性共释放；此规则从不产出排他的兴奋性类型标签。"
   },
   {
@@ -135,20 +581,83 @@
     "target_label": "Glycinergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-gly", "all_of": [["SLC6A5"], ["SLC32A1"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-GLY.md", "note": "保留摄取/囊泡双证据；SLC32A1也是GABA共用转运体。"}],
-    "supporting": {"genes": ["SNAP25", "MAP2"], "panel_ids": ["neuronal-background"], "use": "神经元背景支持；不能在缺少SLC6A5时替代甘氨酸相关核心。"},
-    "conflicts": [
-      {"program": "GABA_or_GABA_glycine_coprogram", "genes": ["GAD1", "GAD2", "SLC32A1"], "interpretation": "比较GABA共程序；并存可有生物学解释，不要求互斥，也不从簇均值断言共释放。", "action": "review_not_single_gene_veto"},
-      {"program": "glutamatergic_or_mixed", "genes": ["SLC17A6", "SLC17A7"], "interpretation": "审阅同细胞归属、混合和污染。", "action": "review_not_single_gene_veto"}
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-gly",
+        "all_of": [
+          [
+            "SLC6A5"
+          ],
+          [
+            "SLC32A1"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-GLY.md",
+        "note": "保留摄取/囊泡双证据；SLC32A1也是GABA共用转运体。"
+      }
     ],
-    "high_requires": ["神经元父级High，双核心证据supported。", "取材解剖与甘氨酸能候选相容，并在匹配脑区参考中完成竞争身份核验；all不表示每一脑区都预期存在。", "有GAD共程序时注明非排他身份及证据尺度，未解决混簇不得High。"],
+    "supporting": {
+      "genes": [
+        "SNAP25",
+        "MAP2"
+      ],
+      "panel_ids": [
+        "neuronal-background"
+      ],
+      "use": "神经元背景支持；不能在缺少SLC6A5时替代甘氨酸相关核心。"
+    },
+    "conflicts": [
+      {
+        "program": "GABA_or_GABA_glycine_coprogram",
+        "genes": [
+          "GAD1",
+          "GAD2",
+          "SLC32A1"
+        ],
+        "interpretation": "比较GABA共程序；并存可有生物学解释，不要求互斥，也不从簇均值断言共释放。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "glutamatergic_or_mixed",
+        "genes": [
+          "SLC17A6",
+          "SLC17A7"
+        ],
+        "interpretation": "审阅同细胞归属、混合和污染。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High，双核心证据supported。",
+      "取材解剖与甘氨酸能候选相容，并在匹配脑区参考中完成竞争身份核验；all不表示每一脑区都预期存在。",
+      "有GAD共程序时注明非排他身份及证据尺度，未解决混簇不得High。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "仅SLC32A1不能区分GABA与甘氨酸；仅SLC6A5为候选，缺核心上限Moderate。", "strong_conflict": "回到父级或transmitter-unresolved，并审阅是否存在真实共程序。", "fallback_label": "Neuron: glycine-related candidate / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "仅SLC32A1不能区分GABA与甘氨酸；仅SLC6A5为候选，缺核心上限Moderate。",
+      "strong_conflict": "回到父级或transmitter-unresolved，并审阅是否存在真实共程序。",
+      "fallback_label": "Neuron: glycine-related candidate / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["glycinergic", "neuronal-background", "gaba-core", "glut-vglut1", "glut-vglut2"],
+    "source_panel_ids": [
+      "glycinergic",
+      "neuronal-background",
+      "gaba-core",
+      "glut-vglut1",
+      "glut-vglut2"
+    ],
     "notes": "基因表达鉴定不等于验证实际抑制性功能或递质共释放。"
   },
   {
@@ -156,20 +665,92 @@
     "target_label": "Serotonergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-ser", "all_of": [["TPH2"], ["FEV"], ["DDC"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-SER.md", "note": "成人脑5-HT核心三联；不把TPH1静默改名成TPH2或作为自动替代。"}],
-    "supporting": {"genes": ["SLC18A2"], "panel_ids": ["da-core"], "use": "单胺囊泡背景的非特异支持，不能单独区分5-HT、DA、NE，也不能替代三联核心。"},
-    "conflicts": [
-      {"program": "catecholaminergic", "genes": ["TH", "SLC6A3", "DBH", "PNMT"], "interpretation": "结合DDC等完整程序比较儿茶酚胺类型；DDC为共享证据不能单独区分。", "action": "review_not_single_gene_veto"},
-      {"program": "additional_transmitter", "genes": ["SLC17A6", "SLC17A8", "GAD1", "GAD2", "SLC32A1"], "interpretation": "审阅共程序/混群和细胞内一致性，不要求转录程序绝对互斥。", "action": "review_not_single_gene_veto"}
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-ser",
+        "all_of": [
+          [
+            "TPH2"
+          ],
+          [
+            "FEV"
+          ],
+          [
+            "DDC"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-SER.md",
+        "note": "成人脑5-HT核心三联；不把TPH1静默改名成TPH2或作为自动替代。"
+      }
     ],
-    "high_requires": ["神经元父级High且TPH2/FEV/DDC组合成立。", "匹配脑区/取材及成人5-HT参考支持，能够排除更合理的儿茶酚胺候选。", "TPH2或FEV单阳性、以及共有DDC/SLC18A2不能单独完成High判定。"],
+    "supporting": {
+      "genes": [
+        "SLC18A2"
+      ],
+      "panel_ids": [
+        "da-core"
+      ],
+      "use": "单胺囊泡背景的非特异支持，不能单独区分5-HT、DA、NE，也不能替代三联核心。"
+    },
+    "conflicts": [
+      {
+        "program": "catecholaminergic",
+        "genes": [
+          "TH",
+          "SLC6A3",
+          "DBH",
+          "PNMT"
+        ],
+        "interpretation": "结合DDC等完整程序比较儿茶酚胺类型；DDC为共享证据不能单独区分。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "additional_transmitter",
+        "genes": [
+          "SLC17A6",
+          "SLC17A8",
+          "GAD1",
+          "GAD2",
+          "SLC32A1"
+        ],
+        "interpretation": "审阅共程序/混群和细胞内一致性，不要求转录程序绝对互斥。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High且TPH2/FEV/DDC组合成立。",
+      "匹配脑区/取材及成人5-HT参考支持，能够排除更合理的儿茶酚胺候选。",
+      "TPH2或FEV单阳性、以及共有DDC/SLC18A2不能单独完成High判定。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "核心不完整时为5-HT candidate或父级；当前无验证过的替代组合。", "strong_conflict": "保留monoamine/transmitter-unresolved，核查混合、污染或相邻单胺细胞。", "fallback_label": "Neuron: serotonergic candidate / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "核心不完整时为5-HT candidate或父级；当前无验证过的替代组合。",
+      "strong_conflict": "保留monoamine/transmitter-unresolved，核查混合、污染或相邻单胺细胞。",
+      "fallback_label": "Neuron: serotonergic candidate / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["serotonergic", "neuronal-background", "da-core", "noradrenergic", "adrenergic", "glut-vglut2", "glut-vglut3", "gaba-core"],
+    "source_panel_ids": [
+      "serotonergic",
+      "neuronal-background",
+      "da-core",
+      "noradrenergic",
+      "adrenergic",
+      "glut-vglut2",
+      "glut-vglut3",
+      "gaba-core"
+    ],
     "notes": "本版未引入库外基因；如后续补充新的转运体或参考特征，必须逐项溯源并更新规则，不能称现有已验证补救。"
   },
   {
@@ -177,17 +758,80 @@
     "target_label": "Cholinergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-chol", "all_of": [["CHAT"], ["SLC5A7"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-CHOL.md", "note": "保留Siletti双基因来源规则；SLC18A3是ScType来源的补充证据，本版不宣称它已被验证可替代SLC5A7。"}],
-    "supporting": {"genes": ["SLC18A3"], "panel_ids": ["cholinergic"], "use": "提供囊泡转运的互补证据；不得由其单独定义胆碱能身份。"},
-    "conflicts": [{"program": "other_transmitter_or_mixed", "genes": ["GAD1", "GAD2", "SLC32A1", "SLC17A6", "SLC17A7", "SLC17A8", "TH", "SLC6A3"], "interpretation": "按各竞争面板核验；真实共程序、混簇、污染需要区分，不能凭单marker否决。", "action": "review_not_single_gene_veto"}],
-    "high_requires": ["神经元父级High且CHAT/SLC5A7组合supported，SLC18A3可作互补。", "匹配脑区的整体胆碱能背景支持，且竞争递质与群内异质性审阅通过。", "不能用受体表达、泛神经元证据或单个囊泡基因自动补齐核心缺失。"],
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-chol",
+        "all_of": [
+          [
+            "CHAT"
+          ],
+          [
+            "SLC5A7"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-CHOL.md",
+        "note": "保留Siletti双基因来源规则；SLC18A3是ScType来源的补充证据，本版不宣称它已被验证可替代SLC5A7。"
+      }
+    ],
+    "supporting": {
+      "genes": [
+        "SLC18A3"
+      ],
+      "panel_ids": [
+        "cholinergic"
+      ],
+      "use": "提供囊泡转运的互补证据；不得由其单独定义胆碱能身份。"
+    },
+    "conflicts": [
+      {
+        "program": "other_transmitter_or_mixed",
+        "genes": [
+          "GAD1",
+          "GAD2",
+          "SLC32A1",
+          "SLC17A6",
+          "SLC17A7",
+          "SLC17A8",
+          "TH",
+          "SLC6A3"
+        ],
+        "interpretation": "按各竞争面板核验；真实共程序、混簇、污染需要区分，不能凭单marker否决。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High且CHAT/SLC5A7组合supported，SLC18A3可作互补。",
+      "匹配脑区的整体胆碱能背景支持，且竞争递质与群内异质性审阅通过。",
+      "不能用受体表达、泛神经元证据或单个囊泡基因自动补齐核心缺失。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "核心组合不完整时保留cholinergic candidate至多Moderate或父级。", "strong_conflict": "使用transmitter-unresolved，或在解释清楚后分别记录共程序。", "fallback_label": "Neuron: cholinergic candidate / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "核心组合不完整时保留cholinergic candidate至多Moderate或父级。",
+      "strong_conflict": "使用transmitter-unresolved，或在解释清楚后分别记录共程序。",
+      "fallback_label": "Neuron: cholinergic candidate / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["cholinergic", "neuronal-background", "gaba-core", "glut-vglut1", "glut-vglut2", "glut-vglut3", "da-core"],
+    "source_panel_ids": [
+      "cholinergic",
+      "neuronal-background",
+      "gaba-core",
+      "glut-vglut1",
+      "glut-vglut2",
+      "glut-vglut3",
+      "da-core"
+    ],
     "notes": "本规则不由递质身份推导运动神经元或基底前脑等解剖细类。"
   },
   {
@@ -195,20 +839,86 @@
     "target_label": "Noradrenergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-nor", "all_of": [["DBH"], ["TH"], ["DDC"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-NOR.md", "note": "DBH结合儿茶酚胺合成背景；TH单独并不区分DA与NE。"}],
-    "supporting": {"genes": ["SLC18A2"], "panel_ids": ["da-core"], "use": "共享单胺囊泡支持，不是NE特异证据，不替代DBH。"},
-    "conflicts": [
-      {"program": "adrenergic", "genes": ["PNMT", "DBH", "TH", "DDC"], "interpretation": "PNMT与整套合成背景构成肾上腺素能竞争解释；单个低值先审阅。", "action": "review_not_single_gene_veto"},
-      {"program": "dopaminergic", "genes": ["TH", "SLC6A3", "SLC18A2"], "interpretation": "结合DBH、全表达背景和解剖核验DA/NE；共享核心不能重复计作独立证据。", "action": "review_not_single_gene_veto"}
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-nor",
+        "all_of": [
+          [
+            "DBH"
+          ],
+          [
+            "TH"
+          ],
+          [
+            "DDC"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-NOR.md",
+        "note": "DBH结合儿茶酚胺合成背景；TH单独并不区分DA与NE。"
+      }
     ],
-    "high_requires": ["神经元父级High且DBH/TH/DDC路径supported。", "脑区与NE候选相容，并比较DA和肾上腺素能整体表达背景。", "PNMT可测而未检出只作为检测能力限制下的信息，不能称已证明真阴性。"],
+    "supporting": {
+      "genes": [
+        "SLC18A2"
+      ],
+      "panel_ids": [
+        "da-core"
+      ],
+      "use": "共享单胺囊泡支持，不是NE特异证据，不替代DBH。"
+    },
+    "conflicts": [
+      {
+        "program": "adrenergic",
+        "genes": [
+          "PNMT",
+          "DBH",
+          "TH",
+          "DDC"
+        ],
+        "interpretation": "PNMT与整套合成背景构成肾上腺素能竞争解释；单个低值先审阅。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "dopaminergic",
+        "genes": [
+          "TH",
+          "SLC6A3",
+          "SLC18A2"
+        ],
+        "interpretation": "结合DBH、全表达背景和解剖核验DA/NE；共享核心不能重复计作独立证据。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High且DBH/TH/DDC路径supported。",
+      "脑区与NE候选相容，并比较DA和肾上腺素能整体表达背景。",
+      "PNMT可测而未检出只作为检测能力限制下的信息，不能称已证明真阴性。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "DBH不足或缺少合成背景时保留catecholaminergic/NE candidate，最高Moderate。", "strong_conflict": "未区分DA/NE/ADR时记录catecholaminergic unresolved。", "fallback_label": "Neuron: catecholaminergic unresolved"},
+    "fallback": {
+      "missing_core": "DBH不足或缺少合成背景时保留catecholaminergic/NE candidate，最高Moderate。",
+      "strong_conflict": "未区分DA/NE/ADR时记录catecholaminergic unresolved。",
+      "fallback_label": "Neuron: catecholaminergic unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["noradrenergic", "neuronal-background", "da-core", "adrenergic"],
+    "source_panel_ids": [
+      "noradrenergic",
+      "neuronal-background",
+      "da-core",
+      "adrenergic"
+    ],
     "notes": "不从此标签直接认定蓝斑来源；本库all是审阅入口，不表示解剖无约束。"
   },
   {
@@ -216,20 +926,88 @@
     "target_label": "Adrenergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-adr", "all_of": [["PNMT"], ["DBH"], ["TH"], ["DDC"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-ADR.md", "note": "肾上腺素合成四联来源组合；单PNMT不足，且需要稀有类型的匹配解剖/参考核验。"}],
-    "supporting": {"genes": ["SLC18A2"], "panel_ids": ["da-core"], "use": "共享单胺囊泡支持，不提供ADR特异性或补救缺失PNMT。"},
-    "conflicts": [
-      {"program": "noradrenergic_alternative", "genes": ["DBH", "TH", "DDC"], "interpretation": "前三个共享核心只能支持NE/ADR背景；PNMT证据不可靠时不能把NE提升为ADR。", "action": "review_not_single_gene_veto"},
-      {"program": "dopaminergic_or_mixed", "genes": ["SLC6A3", "TH", "SLC18A2"], "interpretation": "检查其他儿茶酚胺身份、混群及同细胞一致性。", "action": "review_not_single_gene_veto"}
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-adr",
+        "all_of": [
+          [
+            "PNMT"
+          ],
+          [
+            "DBH"
+          ],
+          [
+            "TH"
+          ],
+          [
+            "DDC"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Neurotransmission/NT-ADR.md",
+        "note": "肾上腺素合成四联来源组合；单PNMT不足，且需要稀有类型的匹配解剖/参考核验。"
+      }
     ],
-    "high_requires": ["神经元父级High且四联核心路径supported。", "有匹配成人解剖部位的ADR整体参考证据；罕见细胞不能仅凭低数量异常高值定名。", "NE/DA竞争解释已经审阅，PNMT的细胞来源清楚且非污染驱动。"],
+    "supporting": {
+      "genes": [
+        "SLC18A2"
+      ],
+      "panel_ids": [
+        "da-core"
+      ],
+      "use": "共享单胺囊泡支持，不提供ADR特异性或补救缺失PNMT。"
+    },
+    "conflicts": [
+      {
+        "program": "noradrenergic_alternative",
+        "genes": [
+          "DBH",
+          "TH",
+          "DDC"
+        ],
+        "interpretation": "前三个共享核心只能支持NE/ADR背景；PNMT证据不可靠时不能把NE提升为ADR。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "dopaminergic_or_mixed",
+        "genes": [
+          "SLC6A3",
+          "TH",
+          "SLC18A2"
+        ],
+        "interpretation": "检查其他儿茶酚胺身份、混群及同细胞一致性。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "神经元父级High且四联核心路径supported。",
+      "有匹配成人解剖部位的ADR整体参考证据；罕见细胞不能仅凭低数量异常高值定名。",
+      "NE/DA竞争解释已经审阅，PNMT的细胞来源清楚且非污染驱动。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "PNMT未支持时不能用NE核心补齐ADR；其他核心不足时回到catecholaminergic candidate。", "strong_conflict": "保留catecholaminergic unresolved，审阅混合和异常来源。", "fallback_label": "Neuron: catecholaminergic unresolved"},
+    "fallback": {
+      "missing_core": "PNMT未支持时不能用NE核心补齐ADR；其他核心不足时回到catecholaminergic candidate。",
+      "strong_conflict": "保留catecholaminergic unresolved，审阅混合和异常来源。",
+      "fallback_label": "Neuron: catecholaminergic unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["adrenergic", "neuronal-background", "noradrenergic", "da-core"],
+    "source_panel_ids": [
+      "adrenergic",
+      "neuronal-background",
+      "noradrenergic",
+      "da-core"
+    ],
     "notes": "本规则提出的是RNA身份审阅要求，不是对稀有ADR亚型的性能验证。"
   },
   {
@@ -237,17 +1015,71 @@
     "target_label": "HDC-associated histaminergic neuron",
     "level": "transmitter",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
-    "parent": {"panel_id": "neuronal-background", "minimum_confidence": "High"},
-    "core_routes": [{"id": "siletti-hdc-provisional", "all_of": [["HDC"]], "basis": "source_positive_marker:siletti_rules:Human_adult/Neurotransmission/NT-HDC.md", "note": "只有单HDC来源marker，当前库缺少可核验的类型特异补充组合；身份上限Moderate。"}],
-    "supporting": {"genes": ["SNAP25", "MAP2", "SYP"], "panel_ids": ["neuronal-background"], "use": "确认神经元背景，不能补成组胺能特异性证据或解除本版置信度上限。"},
-    "conflicts": [{"program": "non_neuronal_HDC_or_source_uncertainty", "genes": ["TYROBP", "DOCK8", "CD163", "MRC1"], "interpretation": "有免疫背景或HDC来源不清时检查非神经元来源；本库不完整覆盖所有HDC阳性非神经元，缺少这些基因不能证明排除。", "action": "review_not_single_gene_veto"}],
-    "high_requires": ["当前版本不允许histaminergic身份High，即使HDC很高且父级神经元High。", "未来升级需补入经溯源的成人匹配脑区组胺能特异多基因/整体参考证据，并完成竞争来源审查和替代规则验证；必须通过新版本规则审阅，不能临时解除上限。"],
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
+    "parent": {
+      "panel_id": "neuronal-background",
+      "minimum_confidence": "High"
+    },
+    "core_routes": [
+      {
+        "id": "siletti-hdc-provisional",
+        "all_of": [
+          [
+            "HDC"
+          ]
+        ],
+        "basis": "source_positive_marker:siletti_rules:Human_adult/Neurotransmission/NT-HDC.md",
+        "note": "只有单HDC来源marker，当前库缺少可核验的类型特异补充组合；身份上限Moderate。"
+      }
+    ],
+    "supporting": {
+      "genes": [
+        "SNAP25",
+        "MAP2",
+        "SYP"
+      ],
+      "panel_ids": [
+        "neuronal-background"
+      ],
+      "use": "确认神经元背景，不能补成组胺能特异性证据或解除本版置信度上限。"
+    },
+    "conflicts": [
+      {
+        "program": "non_neuronal_HDC_or_source_uncertainty",
+        "genes": [
+          "TYROBP",
+          "DOCK8",
+          "CD163",
+          "MRC1"
+        ],
+        "interpretation": "有免疫背景或HDC来源不清时检查非神经元来源；本库不完整覆盖所有HDC阳性非神经元，缺少这些基因不能证明排除。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "当前版本不允许histaminergic身份High，即使HDC很高且父级神经元High。",
+      "未来升级需补入经溯源的成人匹配脑区组胺能特异多基因/整体参考证据，并完成竞争来源审查和替代规则验证；必须通过新版本规则审阅，不能临时解除上限。"
+    ],
     "confidence_cap": "Moderate",
-    "fallback": {"missing_core": "HDC缺测/未检出时不支持组胺能候选，保留父级。", "strong_conflict": "HDC来源未解决时降为Low/Uncertain或只记录观测信号。", "fallback_label": "Neuron: HDC-associated candidate / transmitter unresolved"},
+    "fallback": {
+      "missing_core": "HDC缺测/未检出时不支持组胺能候选，保留父级。",
+      "strong_conflict": "HDC来源未解决时降为Low/Uncertain或只记录观测信号。",
+      "fallback_label": "Neuron: HDC-associated candidate / transmitter unresolved"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["histaminergic", "neuronal-background", "myeloid-guard", "macrophage-guard"],
+    "source_panel_ids": [
+      "histaminergic",
+      "neuronal-background",
+      "myeloid-guard",
+      "macrophage-guard"
+    ],
     "notes": "可另行记录HDC程序证据，但不能把程序可信度转成组胺能身份High。"
   },
   {
@@ -255,20 +1087,81 @@
     "target_label": "Oligodendrocyte",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "siletti-oligo-positive", "all_of": [["PLP1"], ["MBP"], ["MOG"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Class/OLIGO.md", "note": "原规则另有-PDGFRA，转入OPC竞争审阅；多个髓鞘RNA可来自环境污染，来源三联仍不是自动充分条件。"}],
-    "supporting": {"genes": ["SOX10"], "panel_ids": ["oligo-guard"], "use": "提供少突谱系互补背景，与OPC共享；不能由SOX10单独区分成熟少突和OPC。"},
-    "conflicts": [
-      {"program": "OPC_or_transition", "genes": ["SOX10", "PDGFRA"], "interpretation": "核查OPC/成熟过渡背景，PDGFRA单个值不是绝对否决。", "action": "review_not_single_gene_veto"},
-      {"program": "neuronal_with_ambient_myelin", "genes": ["SNAP25", "SYP", "MAP2", "RBFOX3"], "interpretation": "若完整神经元程序占优，髓鞘基因不能覆盖神经元身份；检查环境RNA与双细胞。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "siletti-oligo-positive",
+        "all_of": [
+          [
+            "PLP1"
+          ],
+          [
+            "MBP"
+          ],
+          [
+            "MOG"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Class/OLIGO.md",
+        "note": "原规则另有-PDGFRA，转入OPC竞争审阅；多个髓鞘RNA可来自环境污染，来源三联仍不是自动充分条件。"
+      }
     ],
-    "high_requires": ["PLP1/MBP/MOG成套证据可信，匹配整体少突胶质背景支持。", "髓鞘RNA来自该鉴定单位而非广泛背景污染；与神经元及OPC竞争解释比较通过。", "不由少数髓鞘高表达细胞把整个混合簇定为少突。"],
+    "supporting": {
+      "genes": [
+        "SOX10"
+      ],
+      "panel_ids": [
+        "oligo-guard"
+      ],
+      "use": "提供少突谱系互补背景，与OPC共享；不能由SOX10单独区分成熟少突和OPC。"
+    },
+    "conflicts": [
+      {
+        "program": "OPC_or_transition",
+        "genes": [
+          "SOX10",
+          "PDGFRA"
+        ],
+        "interpretation": "核查OPC/成熟过渡背景，PDGFRA单个值不是绝对否决。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "neuronal_with_ambient_myelin",
+        "genes": [
+          "SNAP25",
+          "SYP",
+          "MAP2",
+          "RBFOX3"
+        ],
+        "interpretation": "若完整神经元程序占优，髓鞘基因不能覆盖神经元身份；检查环境RNA与双细胞。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "PLP1/MBP/MOG成套证据可信，匹配整体少突胶质背景支持。",
+      "髓鞘RNA来自该鉴定单位而非广泛背景污染；与神经元及OPC竞争解释比较通过。",
+      "不由少数髓鞘高表达细胞把整个混合簇定为少突。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "组合不足时仅保留oligodendroglial candidate或Uncertain；SOX10不构成已验证替代路径。", "strong_conflict": "记录neuronal/glial conflict或少突谱系未定，审查混合、双细胞及环境RNA。", "fallback_label": "Oligodendroglial candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "组合不足时仅保留oligodendroglial candidate或Uncertain；SOX10不构成已验证替代路径。",
+      "strong_conflict": "记录neuronal/glial conflict或少突谱系未定，审查混合、双细胞及环境RNA。",
+      "fallback_label": "Oligodendroglial candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["oligo-guard", "opc-guard", "neuronal-background"],
+    "source_panel_ids": [
+      "oligo-guard",
+      "opc-guard",
+      "neuronal-background"
+    ],
     "notes": "guard表示在神经元分析中筛查另一谱系；只有整套身份规则和质量条件通过才可给该大类标签。"
   },
   {
@@ -276,21 +1169,89 @@
     "target_label": "Oligodendrocyte precursor cell",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "siletti-opc", "all_of": [["SOX10"], ["PDGFRA"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Class/OPC.md", "note": "少突谱系与前体组合；不纳入LHFPL3单基因替代规则。"}],
-    "supporting": {"genes": ["CSPG4"], "panel_ids": ["pericyte-guard"], "use": "非特异的辅助背景，来源于库中周细胞面板且与OPC共享；不能单独判OPC或补齐SOX10/PDGFRA。"},
-    "conflicts": [
-      {"program": "mature_oligodendroglial", "genes": ["PLP1", "MBP", "MOG"], "interpretation": "比较成熟/过渡少突；部分髓鞘表达并非单基因否决。", "action": "review_not_single_gene_veto"},
-      {"program": "pericytic", "genes": ["PDGFRB", "CSPG4"], "interpretation": "CSPG4共享，需少突谱系与血管壁整体背景区分。", "action": "review_not_single_gene_veto"},
-      {"program": "neuronal", "genes": ["SNAP25", "SYP", "MAP2", "RBFOX3"], "interpretation": "完整神经元程序构成竞争解释；不能因单个所谓OPC marker覆盖神经元身份。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "siletti-opc",
+        "all_of": [
+          [
+            "SOX10"
+          ],
+          [
+            "PDGFRA"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Class/OPC.md",
+        "note": "少突谱系与前体组合；不纳入LHFPL3单基因替代规则。"
+      }
     ],
-    "high_requires": ["SOX10/PDGFRA成套支持且整体背景为少突前体。", "相对于成熟少突、周细胞及神经元的竞争身份已核验。", "来源不确定或组内分裂时不能以簇平均值组合出High。"],
+    "supporting": {
+      "genes": [
+        "CSPG4"
+      ],
+      "panel_ids": [
+        "pericyte-guard"
+      ],
+      "use": "非特异的辅助背景，来源于库中周细胞面板且与OPC共享；不能单独判OPC或补齐SOX10/PDGFRA。"
+    },
+    "conflicts": [
+      {
+        "program": "mature_oligodendroglial",
+        "genes": [
+          "PLP1",
+          "MBP",
+          "MOG"
+        ],
+        "interpretation": "比较成熟/过渡少突；部分髓鞘表达并非单基因否决。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "pericytic",
+        "genes": [
+          "PDGFRB",
+          "CSPG4"
+        ],
+        "interpretation": "CSPG4共享，需少突谱系与血管壁整体背景区分。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "neuronal",
+        "genes": [
+          "SNAP25",
+          "SYP",
+          "MAP2",
+          "RBFOX3"
+        ],
+        "interpretation": "完整神经元程序构成竞争解释；不能因单个所谓OPC marker覆盖神经元身份。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "SOX10/PDGFRA成套支持且整体背景为少突前体。",
+      "相对于成熟少突、周细胞及神经元的竞争身份已核验。",
+      "来源不确定或组内分裂时不能以簇平均值组合出High。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "只见CSPG4或某个非特异基因时不能定OPC；保留oligodendroglial candidate或Uncertain。", "strong_conflict": "保留mixed-lineage/Uncertain并定位竞争表达来自何种细胞。", "fallback_label": "Oligodendroglial candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "只见CSPG4或某个非特异基因时不能定OPC；保留oligodendroglial candidate或Uncertain。",
+      "strong_conflict": "保留mixed-lineage/Uncertain并定位竞争表达来自何种细胞。",
+      "fallback_label": "Oligodendroglial candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["opc-guard", "pericyte-guard", "oligo-guard", "neuronal-background"],
+    "source_panel_ids": [
+      "opc-guard",
+      "pericyte-guard",
+      "oligo-guard",
+      "neuronal-background"
+    ],
     "notes": "CSPG4为情境辅助，不能用另一个面板的同源出处冒充独立OPC验证。"
   },
   {
@@ -298,20 +1259,80 @@
     "target_label": "Astrocyte",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "siletti-astro-positive", "all_of": [["AQP4"], ["GJA1"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Class/ASTRO.md", "note": "原规则另有-FOXJ1，保留为室管膜/纤毛程序审阅。"}],
-    "supporting": {"genes": ["ALDH1L1", "SLC1A2"], "panel_ids": ["astro-guard"], "use": "ScType来源辅助背景；可以支持星形胶质一致性，但本版未验证其替代AQP4/GJA1的组合。"},
-    "conflicts": [
-      {"program": "ependymal_ciliated", "genes": ["FOXJ1"], "interpretation": "FOXJ1是来源情境阴性；本库未提供完整室管膜面板，应以匹配参考核查而非单gene否决。", "action": "review_not_single_gene_veto"},
-      {"program": "neuronal_or_oligodendroglial", "genes": ["SNAP25", "MAP2", "SOX10", "PLP1", "MBP", "MOG"], "interpretation": "分别比较神经元和少突谱系背景，不把组合列表当互斥布尔公式。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "siletti-astro-positive",
+        "all_of": [
+          [
+            "AQP4"
+          ],
+          [
+            "GJA1"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Class/ASTRO.md",
+        "note": "原规则另有-FOXJ1，保留为室管膜/纤毛程序审阅。"
+      }
     ],
-    "high_requires": ["核心组合及整体星形胶质背景一致。", "与室管膜/相关非星形胶质候选比较通过；FOXJ1缺测不能算排除成功。", "AQP4/GJA1信号不能只来自边界混合或环境RNA。"],
+    "supporting": {
+      "genes": [
+        "ALDH1L1",
+        "SLC1A2"
+      ],
+      "panel_ids": [
+        "astro-guard"
+      ],
+      "use": "ScType来源辅助背景；可以支持星形胶质一致性，但本版未验证其替代AQP4/GJA1的组合。"
+    },
+    "conflicts": [
+      {
+        "program": "ependymal_ciliated",
+        "genes": [
+          "FOXJ1"
+        ],
+        "interpretation": "FOXJ1是来源情境阴性；本库未提供完整室管膜面板，应以匹配参考核查而非单gene否决。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "neuronal_or_oligodendroglial",
+        "genes": [
+          "SNAP25",
+          "MAP2",
+          "SOX10",
+          "PLP1",
+          "MBP",
+          "MOG"
+        ],
+        "interpretation": "分别比较神经元和少突谱系背景，不把组合列表当互斥布尔公式。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "核心组合及整体星形胶质背景一致。",
+      "与室管膜/相关非星形胶质候选比较通过；FOXJ1缺测不能算排除成功。",
+      "AQP4/GJA1信号不能只来自边界混合或环境RNA。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "只有辅助背景时保留astroglial candidate至多Moderate，不能临时构造已验证替代路径。", "strong_conflict": "保留glial/Uncertain或室管膜相关候选，转入匹配谱系核验。", "fallback_label": "Astroglial candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "只有辅助背景时保留astroglial candidate至多Moderate，不能临时构造已验证替代路径。",
+      "strong_conflict": "保留glial/Uncertain或室管膜相关候选，转入匹配谱系核验。",
+      "fallback_label": "Astroglial candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["astro-guard", "neuronal-background", "oligo-guard"],
+    "source_panel_ids": [
+      "astro-guard",
+      "neuronal-background",
+      "oligo-guard"
+    ],
     "notes": "神经元SKILL的非神经元guard不覆盖星形胶质功能状态或全部胶质亚型。"
   },
   {
@@ -319,20 +1340,81 @@
     "target_label": "Myeloid-associated cell, unresolved subtype",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "curated-broad-myeloid", "all_of": [["TYROBP"], ["DOCK8"]], "basis": "editorial_subset_and_label_restriction:siletti_rules:Human_adult/Class/MGL.md", "note": "只采用来源正向背景并限制到广义髓系候选；原作者Microglia名称及未完整收录的阴性组合不能自动转移。"}],
-    "supporting": {"genes": [], "panel_ids": ["myeloid-guard"], "use": "当前小面板没有可声明为髓系特异替代的辅助组合；需匹配全表达免疫参考补足区分能力，另留溯源。"},
-    "conflicts": [
-      {"program": "macrophage_subtype_context", "genes": ["CD163", "MRC1", "F13A1"], "interpretation": "是髓系内部的巨噬细胞/BAM相关细分方向，不是排除广义髓系；不能自动命名小胶质。", "action": "review_not_single_gene_veto"},
-      {"program": "neuronal_or_vascular", "genes": ["SNAP25", "MAP2", "CLDN5", "PECAM1", "PDGFRB", "CSPG4"], "interpretation": "比较神经元和血管壁候选及混合来源；TYROBP/DOCK8也不足以覆盖全部其他免疫竞争类型。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "curated-broad-myeloid",
+        "all_of": [
+          [
+            "TYROBP"
+          ],
+          [
+            "DOCK8"
+          ]
+        ],
+        "basis": "editorial_subset_and_label_restriction:siletti_rules:Human_adult/Class/MGL.md",
+        "note": "只采用来源正向背景并限制到广义髓系候选；原作者Microglia名称及未完整收录的阴性组合不能自动转移。"
+      }
     ],
-    "high_requires": ["TYROBP/DOCK8和整体免疫背景一致；不得只用双marker把任何免疫细胞归为髓系。", "匹配成人脑免疫参考能区分主要非髓系免疫候选；小面板没有这些排除基因时必须显式记录参考证据。", "High最多针对广义髓系身份，不赋予microglia或BAM精细标签。"],
+    "supporting": {
+      "genes": [],
+      "panel_ids": [
+        "myeloid-guard"
+      ],
+      "use": "当前小面板没有可声明为髓系特异替代的辅助组合；需匹配全表达免疫参考补足区分能力，另留溯源。"
+    },
+    "conflicts": [
+      {
+        "program": "macrophage_subtype_context",
+        "genes": [
+          "CD163",
+          "MRC1",
+          "F13A1"
+        ],
+        "interpretation": "是髓系内部的巨噬细胞/BAM相关细分方向，不是排除广义髓系；不能自动命名小胶质。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "neuronal_or_vascular",
+        "genes": [
+          "SNAP25",
+          "MAP2",
+          "CLDN5",
+          "PECAM1",
+          "PDGFRB",
+          "CSPG4"
+        ],
+        "interpretation": "比较神经元和血管壁候选及混合来源；TYROBP/DOCK8也不足以覆盖全部其他免疫竞争类型。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "TYROBP/DOCK8和整体免疫背景一致；不得只用双marker把任何免疫细胞归为髓系。",
+      "匹配成人脑免疫参考能区分主要非髓系免疫候选；小面板没有这些排除基因时必须显式记录参考证据。",
+      "High最多针对广义髓系身份，不赋予microglia或BAM精细标签。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "仅有非特异免疫信号时报告immune-associated candidate或Uncertain。", "strong_conflict": "有非髓系竞争解释或参考不足时最高Moderate/Uncertain，不强行使用小胶质标签。", "fallback_label": "Immune-associated candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "仅有非特异免疫信号时报告immune-associated candidate或Uncertain。",
+      "strong_conflict": "有非髓系竞争解释或参考不足时最高Moderate/Uncertain，不强行使用小胶质标签。",
+      "fallback_label": "Immune-associated candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["myeloid-guard", "macrophage-guard", "neuronal-background", "endothelial-guard", "pericyte-guard"],
+    "source_panel_ids": [
+      "myeloid-guard",
+      "macrophage-guard",
+      "neuronal-background",
+      "endothelial-guard",
+      "pericyte-guard"
+    ],
     "notes": "本规则有意比来源MGL名称更保守；库内缺少完整稳态小胶质/其他免疫区分面板。"
   },
   {
@@ -340,20 +1422,86 @@
     "target_label": "Macrophage-associated cell",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "siletti-mac", "all_of": [["CD163"], ["MRC1"], ["F13A1"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Class/MAC.md", "note": "保留巨噬细胞相关三联；不能仅靠这些基因决定边界位置或细胞起源。"}],
-    "supporting": {"genes": ["TYROBP", "DOCK8"], "panel_ids": ["myeloid-guard"], "use": "广义髓系/免疫背景支持，不是巨噬细胞特异验证，也不区分微胶质与BAM。"},
-    "conflicts": [
-      {"program": "microglial_or_other_myeloid_alternative", "genes": ["TYROBP", "DOCK8"], "interpretation": "共享髓系背景不排除任何一方；必须用匹配完整参考比较小胶质及其他髓系候选，本库这两个基因不能完成区分。", "action": "review_not_single_gene_veto"},
-      {"program": "vascular_or_neuronal_mixture", "genes": ["CLDN5", "PECAM1", "PDGFRB", "CSPG4", "SNAP25", "MAP2"], "interpretation": "检查血管邻近细胞混合、环境RNA和双细胞，不由空间邻近推成BAM。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "siletti-mac",
+        "all_of": [
+          [
+            "CD163"
+          ],
+          [
+            "MRC1"
+          ],
+          [
+            "F13A1"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Class/MAC.md",
+        "note": "保留巨噬细胞相关三联；不能仅靠这些基因决定边界位置或细胞起源。"
+      }
     ],
-    "high_requires": ["三联核心在可信免疫/髓系背景中成立。", "已完成匹配成人参考的巨噬/小胶质/其他髓系竞争核验；不能只看CD163单基因。", "High只允许macrophage-associated身份；BAM、外周浸润或解剖位置需要额外来源证据，不在本规则内。"],
+    "supporting": {
+      "genes": [
+        "TYROBP",
+        "DOCK8"
+      ],
+      "panel_ids": [
+        "myeloid-guard"
+      ],
+      "use": "广义髓系/免疫背景支持，不是巨噬细胞特异验证，也不区分微胶质与BAM。"
+    },
+    "conflicts": [
+      {
+        "program": "microglial_or_other_myeloid_alternative",
+        "genes": [
+          "TYROBP",
+          "DOCK8"
+        ],
+        "interpretation": "共享髓系背景不排除任何一方；必须用匹配完整参考比较小胶质及其他髓系候选，本库这两个基因不能完成区分。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "vascular_or_neuronal_mixture",
+        "genes": [
+          "CLDN5",
+          "PECAM1",
+          "PDGFRB",
+          "CSPG4",
+          "SNAP25",
+          "MAP2"
+        ],
+        "interpretation": "检查血管邻近细胞混合、环境RNA和双细胞，不由空间邻近推成BAM。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "三联核心在可信免疫/髓系背景中成立。",
+      "已完成匹配成人参考的巨噬/小胶质/其他髓系竞争核验；不能只看CD163单基因。",
+      "High只允许macrophage-associated身份；BAM、外周浸润或解剖位置需要额外来源证据，不在本规则内。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "核心不完整时为macrophage-associated candidate至多Moderate，或回到广义髓系。", "strong_conflict": "不能区分小胶质/巨噬时保留myeloid unresolved；不把两者混称。", "fallback_label": "Myeloid-associated cell, unresolved subtype"},
+    "fallback": {
+      "missing_core": "核心不完整时为macrophage-associated candidate至多Moderate，或回到广义髓系。",
+      "strong_conflict": "不能区分小胶质/巨噬时保留myeloid unresolved；不把两者混称。",
+      "fallback_label": "Myeloid-associated cell, unresolved subtype"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["macrophage-guard", "myeloid-guard", "endothelial-guard", "pericyte-guard", "neuronal-background"],
+    "source_panel_ids": [
+      "macrophage-guard",
+      "myeloid-guard",
+      "endothelial-guard",
+      "pericyte-guard",
+      "neuronal-background"
+    ],
     "notes": "该guard服务神经元数据的污染/误收录检查，不承担完整免疫细胞图谱分类。"
   },
   {
@@ -361,20 +1509,84 @@
     "target_label": "Endothelial cell",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "siletti-endo", "all_of": [["CLDN5"], ["PECAM1"], ["FLT1"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Class/ENDO.md", "note": "内皮三联组合；FLT1单独不具备足够特异性。"}],
-    "supporting": {"genes": [], "panel_ids": ["endothelial-guard"], "use": "当前库没有独立内皮辅助集合；匹配整体血管参考提供外部支持并单独溯源。"},
-    "conflicts": [
-      {"program": "mural_pericytic", "genes": ["PDGFRB", "CSPG4", "MYH11"], "interpretation": "血管壁与内皮应区分；相邻细胞混合不能视作单一内皮身份。", "action": "review_not_single_gene_veto"},
-      {"program": "immune_or_neuronal", "genes": ["TYROBP", "DOCK8", "CD163", "MRC1", "SNAP25", "MAP2"], "interpretation": "审阅免疫、神经元竞争程序及环境RNA。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "siletti-endo",
+        "all_of": [
+          [
+            "CLDN5"
+          ],
+          [
+            "PECAM1"
+          ],
+          [
+            "FLT1"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Class/ENDO.md",
+        "note": "内皮三联组合；FLT1单独不具备足够特异性。"
+      }
     ],
-    "high_requires": ["三联核心和整体内皮表达背景一致。", "对周细胞/平滑肌及免疫等邻近竞争类型核验通过。", "信号有可信细胞归属，不由混合簇均值造成三联表象。"],
+    "supporting": {
+      "genes": [],
+      "panel_ids": [
+        "endothelial-guard"
+      ],
+      "use": "当前库没有独立内皮辅助集合；匹配整体血管参考提供外部支持并单独溯源。"
+    },
+    "conflicts": [
+      {
+        "program": "mural_pericytic",
+        "genes": [
+          "PDGFRB",
+          "CSPG4",
+          "MYH11"
+        ],
+        "interpretation": "血管壁与内皮应区分；相邻细胞混合不能视作单一内皮身份。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "immune_or_neuronal",
+        "genes": [
+          "TYROBP",
+          "DOCK8",
+          "CD163",
+          "MRC1",
+          "SNAP25",
+          "MAP2"
+        ],
+        "interpretation": "审阅免疫、神经元竞争程序及环境RNA。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "三联核心和整体内皮表达背景一致。",
+      "对周细胞/平滑肌及免疫等邻近竞争类型核验通过。",
+      "信号有可信细胞归属，不由混合簇均值造成三联表象。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "部分血管证据时保留vascular-associated candidate或内皮候选，最高Moderate。", "strong_conflict": "保留vascular/mixed-lineage unresolved并进一步审阅。", "fallback_label": "Vascular-associated candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "部分血管证据时保留vascular-associated candidate或内皮候选，最高Moderate。",
+      "strong_conflict": "保留vascular/mixed-lineage unresolved并进一步审阅。",
+      "fallback_label": "Vascular-associated candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["endothelial-guard", "pericyte-guard", "myeloid-guard", "macrophage-guard", "neuronal-background"],
+    "source_panel_ids": [
+      "endothelial-guard",
+      "pericyte-guard",
+      "myeloid-guard",
+      "macrophage-guard",
+      "neuronal-background"
+    ],
     "notes": "不由此面板细分动脉、静脉、毛细血管或血管功能状态。"
   },
   {
@@ -382,21 +1594,84 @@
     "target_label": "Pericyte-associated cell",
     "level": "major",
     "claim_kind": "identity",
-    "scope": {"species": "human", "stage": "adult", "regions": ["all"]},
+    "scope": {
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ]
+    },
     "parent": null,
-    "core_routes": [{"id": "siletti-per-positive", "all_of": [["PDGFRB"], ["CSPG4"]], "basis": "source_positive_combination:siletti_rules:Human_adult/Class/PER.md", "note": "原规则另有-MYH11；该来源阴性属于血管壁分型的情境审阅，不将缺测或单个值当自动排除。"}],
-    "supporting": {"genes": [], "panel_ids": ["pericyte-guard"], "use": "本库没有可独立补齐的周细胞辅助组合；High依赖有溯源的整体血管壁参考核验。"},
-    "conflicts": [
-      {"program": "oligodendrocyte_precursor", "genes": ["SOX10", "PDGFRA", "CSPG4"], "interpretation": "CSPG4共享，需核验OPC和周细胞整体背景；不可由CSPG4单阳性定名。", "action": "review_not_single_gene_veto"},
-      {"program": "smooth_muscle_or_mural_transition", "genes": ["MYH11"], "interpretation": "MYH11情境提示平滑肌/过渡血管壁类型；本库缺完整平滑肌面板，需匹配参考。", "action": "review_not_single_gene_veto"},
-      {"program": "endothelial", "genes": ["CLDN5", "PECAM1", "FLT1"], "interpretation": "检查邻近内皮混入及双细胞。", "action": "review_not_single_gene_veto"}
+    "core_routes": [
+      {
+        "id": "siletti-per-positive",
+        "all_of": [
+          [
+            "PDGFRB"
+          ],
+          [
+            "CSPG4"
+          ]
+        ],
+        "basis": "source_positive_combination:siletti_rules:Human_adult/Class/PER.md",
+        "note": "原规则另有-MYH11；该来源阴性属于血管壁分型的情境审阅，不将缺测或单个值当自动排除。"
+      }
     ],
-    "high_requires": ["PDGFRB/CSPG4核心在可信血管壁背景中一致。", "匹配成人脑血管参考能够区分OPC、平滑肌及其他血管壁候选；双marker本身不足。", "MYH11缺测不能代替竞争类型排除，未解决血管壁亚型时最高Moderate。"],
+    "supporting": {
+      "genes": [],
+      "panel_ids": [
+        "pericyte-guard"
+      ],
+      "use": "本库没有可独立补齐的周细胞辅助组合；High依赖有溯源的整体血管壁参考核验。"
+    },
+    "conflicts": [
+      {
+        "program": "oligodendrocyte_precursor",
+        "genes": [
+          "SOX10",
+          "PDGFRA",
+          "CSPG4"
+        ],
+        "interpretation": "CSPG4共享，需核验OPC和周细胞整体背景；不可由CSPG4单阳性定名。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "smooth_muscle_or_mural_transition",
+        "genes": [
+          "MYH11"
+        ],
+        "interpretation": "MYH11情境提示平滑肌/过渡血管壁类型；本库缺完整平滑肌面板，需匹配参考。",
+        "action": "review_not_single_gene_veto"
+      },
+      {
+        "program": "endothelial",
+        "genes": [
+          "CLDN5",
+          "PECAM1",
+          "FLT1"
+        ],
+        "interpretation": "检查邻近内皮混入及双细胞。",
+        "action": "review_not_single_gene_veto"
+      }
+    ],
+    "high_requires": [
+      "PDGFRB/CSPG4核心在可信血管壁背景中一致。",
+      "匹配成人脑血管参考能够区分OPC、平滑肌及其他血管壁候选；双marker本身不足。",
+      "MYH11缺测不能代替竞争类型排除，未解决血管壁亚型时最高Moderate。"
+    ],
     "confidence_cap": "High",
-    "fallback": {"missing_core": "缺少组合证据时为mural/vascular-associated candidate或Uncertain，当前没有验证过替代路径。", "strong_conflict": "保留mural-cell unresolved或OPC/vascular unresolved，并定位混合来源。", "fallback_label": "Mural/vascular-associated candidate / Uncertain"},
+    "fallback": {
+      "missing_core": "缺少组合证据时为mural/vascular-associated candidate或Uncertain，当前没有验证过替代路径。",
+      "strong_conflict": "保留mural-cell unresolved或OPC/vascular unresolved，并定位混合来源。",
+      "fallback_label": "Mural/vascular-associated candidate / Uncertain"
+    },
     "rescue_routes": [],
     "validation_status": "curated_unbenchmarked",
-    "source_panel_ids": ["pericyte-guard", "opc-guard", "endothelial-guard"],
+    "source_panel_ids": [
+      "pericyte-guard",
+      "opc-guard",
+      "endothelial-guard"
+    ],
     "notes": "来源的周细胞命名不能绕过脑区适配和血管壁整体参考比较。"
   }
 ]

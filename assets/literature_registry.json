@@ -1,0 +1,68 @@
+{
+  "citations": [
+    {
+      "source_id": "siletti_rules",
+      "authors": "Siletti K et al.",
+      "title": "Transcriptomic diversity of cell types across the adult human brain",
+      "journal": "Science",
+      "year": 2023,
+      "doi": "10.1126/science.add7046",
+      "evidence_kind": "author_rule_associated_with_atlas_not_original_discovery_of_every_marker"
+    },
+    {
+      "source_id": "siletti_atlas",
+      "authors": "Siletti K et al.",
+      "title": "Transcriptomic diversity of cell types across the adult human brain",
+      "journal": "Science",
+      "year": 2023,
+      "doi": "10.1126/science.add7046",
+      "evidence_kind": "reference_atlas"
+    },
+    {
+      "source_id": "kamath_2022",
+      "authors": "Kamath T et al.",
+      "title": "Single-cell genomic profiling of human dopamine neurons identifies a population that selectively degenerates in Parkinson’s disease",
+      "journal": "Nature Neuroscience",
+      "year": 2022,
+      "doi": "10.1038/s41593-022-01061-1",
+      "evidence_kind": "primary_human_SN_study"
+    },
+    {
+      "source_id": "sctype",
+      "authors": "Ianevski A et al.",
+      "title": "Fully-automated and ultra-fast cell-type identification using specific marker combinations from single-cell transcriptomic data",
+      "journal": "Nature Communications",
+      "year": 2022,
+      "doi": "10.1038/s41467-022-28803-w",
+      "evidence_kind": "aggregated_database_method_paper_not_per_marker_primary_validation"
+    },
+    {
+      "source_id": "panglaodb",
+      "authors": "Franzen O et al.",
+      "title": "PanglaoDB: a web server for exploration of mouse and human single-cell RNA sequencing data",
+      "journal": "Database",
+      "year": 2019,
+      "doi": "10.1093/database/baz046",
+      "evidence_kind": "aggregated_database_paper_not_per_marker_primary_validation"
+    },
+    {
+      "source_id": "cellmarker_2",
+      "authors": "Hu C et al.",
+      "title": "CellMarker 2.0: an updated database of manually curated cell markers in human/mouse and web tools based on scRNA-seq data",
+      "journal": "Nucleic Acids Research",
+      "year": 2023,
+      "doi": "10.1093/nar/gkac947",
+      "evidence_kind": "indexed_resource_no_current_marker_assertions"
+    },
+    {
+      "source_id": "wang_2024",
+      "authors": "Wang Q, Wang M, Choi I, et al.",
+      "title": "Molecular profiling of human substantia nigra identifies diverse neuron types associated with vulnerability in Parkinson’s disease",
+      "journal": "Science Advances",
+      "year": 2024,
+      "doi": "10.1126/sciadv.adi8287",
+      "evidence_kind": "primary_human_SN_study"
+    }
+  ],
+  "note": "Source-method papers and primary marker studies are distinct. Original discovery is not invented for database rows."
+}

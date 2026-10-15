@@ -8,6 +8,9 @@ from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 MANUAL_FACTS = {
+    ('wang_2024', 'Neuron auxiliary NRGN'): (['NRGN'], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10780895/', 'Methods: Cluster cell-type annotation; neuronal auxiliary evidence only'),
+    ('wang_2024', 'RIT2 neuronal program'): (['RIT2'], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10780895/', 'Fig1C/Fig2/TableS2 C9; not a fixed type or mandatory GALNTL6 combination'),
+    ('wang_2024', 'GALNTL6 neuronal program'): (['GALNTL6'], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10780895/', 'Fig1C/Fig4/TableS2 C6 and subclusters; separate expression program'),
     ('panglaodb', 'Neurons'): (['SNAP25', 'STMN2'], 'https://panglaodb.se/markers.html?cell_type=%27Neurons%27', 'Selected Neurons rows inspected 2026-10-14; species column Mm Hs; no specificity validation'),
     ('kamath_2022', 'DA core triad'): (['TH', 'SLC6A3', 'SLC18A2'], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9076534/', 'Results: A molecular taxonomy of human SNpc DA neurons; Extended Data Fig1i,j'),
     ('kamath_2022', 'SOX6 DA branch'): (['SOX6'], 'https://pmc.ncbi.nlm.nih.gov/articles/PMC9076534/', 'Fig1e and Results: SOX6/CALB1 DA branches'),

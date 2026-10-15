@@ -130,7 +130,7 @@
 
 以下程序都以 `neuronal-background` High 为父级，辅助集合为 SNAP25、MAP2、SYP；辅助基因核验信号归属，不替代肽基因。程序 High 可以针对一个明确转录本的可信表达成立，但不能转换成细胞身份 High。程序共同存在时可分别记录，是否共表达必须在细胞层面检查。
 
-**HCRT、PMCH 在匹配下丘脑及完整多基因参考支持下能够参与细胞类型鉴定。** 本版本的 37 面板没有构建完整下丘脑 HCRT/PMCH 身份路线，因此保留为 program，不作自动升级。这不是“神经肽永远不能作为身份 marker”。相关人类下丘脑背景可参见 [HYPOMAP](https://www.nature.com/articles/s41586-024-08504-8)；本规则不声称已导入该完整参考或其全部 marker。
+**HCRT、PMCH在匹配下丘脑及完整多基因参考支持下能够参与细胞类型鉴定。** 本版本没有构建完整下丘脑HCRT/PMCH身份路线，因此保留为program。相关人类下丘脑背景可参见[HYPOMAP](https://www.nature.com/articles/s41586-024-08504-8)；本规则未导入该完整参考或其全部marker。
 
 ### peptide-hcrt
 

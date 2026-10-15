@@ -1,39 +1,221 @@
 {
- "neuronal-background":{"siletti_rules":["Human_adult/Class/NEUR.md"],"sctype":["Mature neurons"],"panglaodb":["Neurons"]},
- "da-core":{"siletti_rules":["Human_adult/Neurotransmission/NT-DA.md","Human_adult/Neurotransmission/NT-NOR.md","Human_adult/Neurotransmission/NT-ADR.md"],"kamath_2022":["DA core triad"]},
- "gaba-core":{"siletti_rules":["Human_adult/Neurotransmission/NT-GABA1.md","Human_adult/Neurotransmission/NT-GABA2.md"]},
- "glut-vglut1":{"siletti_rules":["Human_adult/Neurotransmission/NT-VGLUT1.md"]},
- "glut-vglut2":{"siletti_rules":["Human_adult/Neurotransmission/NT-VGLUT2.md"]},
- "glut-vglut3":{"siletti_rules":["Human_adult/Neurotransmission/NT-VGLUT3.md"]},
- "glycinergic":{"siletti_rules":["Human_adult/Neurotransmission/NT-GLY.md"]},
- "serotonergic":{"siletti_rules":["Human_adult/Neurotransmission/NT-SER.md"]},
- "cholinergic":{"siletti_rules":["Human_adult/Neurotransmission/NT-CHOL.md"],"sctype":["Cholinergic neurons"]},
- "noradrenergic":{"siletti_rules":["Human_adult/Neurotransmission/NT-NOR.md"]},
- "adrenergic":{"siletti_rules":["Human_adult/Neurotransmission/NT-ADR.md"]},
- "histaminergic":{"siletti_rules":["Human_adult/Neurotransmission/NT-HDC.md"]},
- "cortical-pvalb":{"siletti_rules":["Human_adult/Subtype/Neuronal/INT-PVALB.md"]},
- "cortical-sst":{"siletti_rules":["Human_adult/Subtype/Neuronal/INT-SST.md"]},
- "cortical-vip":{"siletti_rules":["Human_adult/Subtype/Neuronal/INT-VIP.md"]},
- "cortical-lamp5":{"siletti_rules":["Human_adult/Subtype/Neuronal/INT-LAMP5.md"]},
- "striatal-d1":{"siletti_rules":["Human_adult/Subtype/Neuronal/MSN-D1.md"]},
- "striatal-d2":{"siletti_rules":["Human_adult/Subtype/Neuronal/MSN-D2.md"]},
- "cerebellar-purkinje":{"siletti_rules":["Human_adult/Subtype/Neuronal/CB-PURK.md"]},
- "cerebellar-granule":{"siletti_rules":["Human_adult/Subtype/Neuronal/CB-GRAN.md"]},
- "da-sox6":{"kamath_2022":["SOX6 DA branch"]},
- "da-calb1":{"kamath_2022":["CALB1 DA branch"]},
- "da-sox6-agtr1":{"kamath_2022":["SOX6_AGTR1 DA subtype"]},
- "da-calb1-tmem200a":{"kamath_2022":["CALB1_TMEM200A DA subtype"]},
- "peptide-hcrt":{"siletti_rules":["Neuropeptides/NP-HCRT.md"]},
- "peptide-pmch":{"siletti_rules":["Neuropeptides/NP-PMCH.md"]},
- "peptide-npy":{"siletti_rules":["Neuropeptides/NP-NPY.md"]},
- "peptide-sst":{"siletti_rules":["Neuropeptides/NP-SST.md"]},
- "peptide-vip":{"siletti_rules":["Neuropeptides/NP-VIP.md"]},
- "oligo-guard":{"siletti_rules":["Human_adult/Class/OLIGO.md"],"sctype":["Oligodendrocytes"]},
- "opc-guard":{"siletti_rules":["Human_adult/Class/OPC.md"]},
- "astro-guard":{"siletti_rules":["Human_adult/Class/ASTRO.md"],"sctype":["Astrocytes"]},
- "myeloid-guard":{"siletti_rules":["Human_adult/Class/MGL.md"]},
- "macrophage-guard":{"siletti_rules":["Human_adult/Class/MAC.md"]},
- "endothelial-guard":{"siletti_rules":["Human_adult/Class/ENDO.md"]},
- "pericyte-guard":{"siletti_rules":["Human_adult/Class/PER.md"]},
- "immature-program":{"sctype":["Immature neurons"]}
+  "neuronal-background": {
+    "siletti_rules": [
+      "Human_adult/Class/NEUR.md"
+    ],
+    "sctype": [
+      "Mature neurons"
+    ],
+    "panglaodb": [
+      "Neurons"
+    ],
+    "wang_2024": [
+      "Neuron auxiliary NRGN"
+    ]
+  },
+  "da-core": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-DA.md",
+      "Human_adult/Neurotransmission/NT-NOR.md",
+      "Human_adult/Neurotransmission/NT-ADR.md"
+    ],
+    "kamath_2022": [
+      "DA core triad"
+    ]
+  },
+  "gaba-core": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-GABA1.md",
+      "Human_adult/Neurotransmission/NT-GABA2.md"
+    ]
+  },
+  "glut-vglut1": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-VGLUT1.md"
+    ]
+  },
+  "glut-vglut2": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-VGLUT2.md"
+    ]
+  },
+  "glut-vglut3": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-VGLUT3.md"
+    ]
+  },
+  "glycinergic": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-GLY.md"
+    ]
+  },
+  "serotonergic": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-SER.md"
+    ]
+  },
+  "cholinergic": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-CHOL.md"
+    ],
+    "sctype": [
+      "Cholinergic neurons"
+    ]
+  },
+  "noradrenergic": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-NOR.md"
+    ]
+  },
+  "adrenergic": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-ADR.md"
+    ]
+  },
+  "histaminergic": {
+    "siletti_rules": [
+      "Human_adult/Neurotransmission/NT-HDC.md"
+    ]
+  },
+  "cortical-pvalb": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/INT-PVALB.md"
+    ]
+  },
+  "cortical-sst": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/INT-SST.md"
+    ]
+  },
+  "cortical-vip": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/INT-VIP.md"
+    ]
+  },
+  "cortical-lamp5": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/INT-LAMP5.md"
+    ]
+  },
+  "striatal-d1": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/MSN-D1.md"
+    ]
+  },
+  "striatal-d2": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/MSN-D2.md"
+    ]
+  },
+  "cerebellar-purkinje": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/CB-PURK.md"
+    ]
+  },
+  "cerebellar-granule": {
+    "siletti_rules": [
+      "Human_adult/Subtype/Neuronal/CB-GRAN.md"
+    ]
+  },
+  "da-sox6": {
+    "kamath_2022": [
+      "SOX6 DA branch"
+    ]
+  },
+  "da-calb1": {
+    "kamath_2022": [
+      "CALB1 DA branch"
+    ]
+  },
+  "da-sox6-agtr1": {
+    "kamath_2022": [
+      "SOX6_AGTR1 DA subtype"
+    ]
+  },
+  "da-calb1-tmem200a": {
+    "kamath_2022": [
+      "CALB1_TMEM200A DA subtype"
+    ]
+  },
+  "peptide-hcrt": {
+    "siletti_rules": [
+      "Neuropeptides/NP-HCRT.md"
+    ]
+  },
+  "peptide-pmch": {
+    "siletti_rules": [
+      "Neuropeptides/NP-PMCH.md"
+    ]
+  },
+  "peptide-npy": {
+    "siletti_rules": [
+      "Neuropeptides/NP-NPY.md"
+    ]
+  },
+  "peptide-sst": {
+    "siletti_rules": [
+      "Neuropeptides/NP-SST.md"
+    ]
+  },
+  "peptide-vip": {
+    "siletti_rules": [
+      "Neuropeptides/NP-VIP.md"
+    ]
+  },
+  "oligo-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/OLIGO.md"
+    ],
+    "sctype": [
+      "Oligodendrocytes"
+    ]
+  },
+  "opc-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/OPC.md"
+    ]
+  },
+  "astro-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/ASTRO.md"
+    ],
+    "sctype": [
+      "Astrocytes"
+    ]
+  },
+  "myeloid-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/MGL.md"
+    ]
+  },
+  "macrophage-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/MAC.md"
+    ]
+  },
+  "endothelial-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/ENDO.md"
+    ]
+  },
+  "pericyte-guard": {
+    "siletti_rules": [
+      "Human_adult/Class/PER.md"
+    ]
+  },
+  "immature-program": {
+    "sctype": [
+      "Immature neurons"
+    ]
+  },
+  "rit2-enriched-program": {
+    "wang_2024": [
+      "RIT2 neuronal program"
+    ]
+  },
+  "galntl6-associated-program": {
+    "wang_2024": [
+      "GALNTL6 neuronal program"
+    ]
+  }
 }

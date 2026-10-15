@@ -19,11 +19,11 @@
 
 这是本项目选择的**review panel**，不是上游字面规则。每个面板含唯一 id、label、category、species、stage、regions、positive、negative、sources、notes。`positive` 是需检查的 marker 集合，不隐含全部必须同细胞阳性；`negative` 是上下文冲突审阅线索，不是零 counts 即满足的条件。未列出阴性不代表不存在冲突。
 
-category 分为 lineage、transmitter、regional_subtype、da_program、neuropeptide_program、non_neuronal_guard、maturation_program。`regions=["all"]` 表示用于宽泛谱系/程序筛查，不保证每个基因在所有脑区都有相同特异性。支持程序不等于身份。
+category分为lineage、transmitter、regional_subtype、da_program、neuropeptide_program、non_neuronal_guard、maturation_program和neuronal_expression_program。`regions=["all"]`表示宽泛谱系/程序筛查，不保证基因在所有脑区具有相同特异性。支持程序不等于身份；RIT2与GALNTL6分别保存程序审阅结果。
 
-## v1.2.0 鉴定单位
+## v1.3.0 鉴定单位
 
-最终 `celltype_major`、`transmitter_class`、`celltype_subtype` 从正式 cluster/subcluster 的审阅表按 `annotation_unit_id` 关联，`annotation_basis=cluster_inherited`。保存 `annotation_unit_type=cluster`、`annotation_rulebook_version=1.2.0`、各层级 `cluster_confidence_*`；成员细胞不另行获得独立身份置信度，若保留通用 confidence 字段，须明确 `confidence_scope=cluster`。同一正式鉴定单位在同一身份层级只能有一个最终标签。
+最终 `celltype_major`、`transmitter_class`、`celltype_subtype` 从正式 cluster/subcluster 的审阅表按 `annotation_unit_id` 关联，`annotation_basis=cluster_inherited`。保存 `annotation_unit_type=cluster`、`annotation_rulebook_version=1.3.0`、各层级 `cluster_confidence_*`；成员细胞不另行获得独立身份置信度，若保留通用 confidence 字段，须明确 `confidence_scope=cluster`。同一正式鉴定单位在同一身份层级只能有一个最终标签。
 
 逐细胞来源、实测 marker、参考预测和冲突标志独立保留，仅用于辅助核验，不覆盖最终身份。正式子聚类须保留父 cluster_id、subcluster_id、方法参数和稳定性/marker/供者审阅记录；按 marker/参考挑出的表达分组不算正式 subcluster。
 
@@ -49,7 +49,7 @@ category 分为 lineage、transmitter、regional_subtype、da_program、neuropep
 
 审阅输入由 `python scripts/review_rules.py --template RULE_ID` 生成，以当前模板为准。每个门槛和附加检查包含 pass/fail/unknown 与证据引用；每条基因证据包含状态和实际归属对象。操作者审阅内容的真实性不由检查器验证。结果不直接写回细胞元数据；实际应用需保存原始标签、新标签、review_grade、来源及冲突，再决定报告粒度。
 
-输入必须声明 `rulebook_version="1.2.0"`；缺失或不同版本会被拒绝，避免旧审阅记录静默套用新规则。identity 审阅要求 `unit_type="cluster"`，包含已正式聚类的 subcluster；cell 单位仅允许 program 诊断。规则升级后需重新核对证据，不能只替换版本号。
+输入必须声明 `rulebook_version="1.3.0"`；缺失或不同版本会被拒绝，避免旧审阅记录静默套用新规则。identity 审阅要求 `unit_type="cluster"`，包含已正式聚类的 subcluster；cell 单位仅允许 program 诊断。规则升级后需重新核对证据，不能只替换版本号。
 
 `reviewer` 和 `review_date` 用于记录审核人及 `YYYY-MM-DD` 日期；空模板可以检查缺口，但这两项不完整时不能得到 High。Low 的建议标签固定为 `Unknown/Uncertain`，NotApplicable 的建议标签为空；父级记录只保存证据状态，不会在质量失败或谱系冲突后自动继承。核心满足和技术审阅完成的记录也不等同于真实性已被独立验证。
 

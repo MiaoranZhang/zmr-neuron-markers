@@ -1,5 +1,9 @@
 # 资源索引与选择
 
+## v1.3研究相关补充
+
+[Wang等，Science Advances 2024](https://doi.org/10.1126/sciadv.adi8287)支持NRGN辅助背景，以及分别审阅RIT2富集和GALNTL6相关程序。RIT2、GALNTL6在原图与补表中的分布不同，不作为固定双阳性类别。原文方法、Fig1/2/4与TableS2的具体定位见[逐基因文献](marker-literature.md)及[研究程序规则](rules-study-programs.md)。数据库方法论文与原始研究的证据层级不同；查询含GSE184950时，与该论文共享数据，不能算独立验证。
+
 版本、许可及 acquisition_status 的机器可读事实见 `assets/source_registry.json`，不要将 indexed_only 或 mapping payload not frozen 改称完整导入。
 
 ## Siletti 作者规则
@@ -69,6 +73,6 @@ python scripts/import_resources.py --source sctype --out local_imports
 
 ## v1.1 判定规则的来源层级
 
-逐类型规则见 [规则总则](rulebook.md)。原有 74 个基因事实索引保持不变；新增的是核心/辅助/冲突用途和条件化审阅逻辑。机器规则的 `source_panel_ids` 关联原面板及逐基因来源，`core_routes.basis` 区分作者使用过的组合与本项目原创编辑的证据分组。源研究支持某个组合，不等于本项目在独立数据上验证了该规则，也不等于允许任意缺失补救。
+逐类型规则见[规则总则](rulebook.md)。v1.1在原74个基因上增加核心/辅助/冲突审阅逻辑；v1.3新增NRGN、RIT2、GALNTL6，合计77个基因。`source_panel_ids`关联逐基因来源，`core_routes.basis`区分作者组合与本项目编辑的证据分组。来源支持某个组合，不等于在独立数据上验证了该规则，也不允许任意缺失补救。
 
 关于 HCRT/PMCH、TPH1/TPH2、PPP1R1B 等解释上的修订及原始论文，集中列于规则总则末节；这些文献没有被冒充为完整下载的新参考图谱。

@@ -14,7 +14,7 @@
 
 ## 1. 神经元背景 — `neuronal-background`
 
-**核心：** `(SNAP25 或 SYP) 且 (MAP2、RBFOX3、STMN2、TUBB3 中至少一个)`。这是本库提出的分组编辑规则，不是 Siletti 的单 `RBFOX3` 原规则，也不是经性能验证的“两基因分类器”。其余核心组成员提供一致性支持，当前没有额外、独立的辅助组。
+**核心：** `(SNAP25 或 SYP) 且 (MAP2、RBFOX3、STMN2、TUBB3 中至少一个)`。这是本库提出的分组编辑规则，不是Siletti的单RBFOX3原规则，也不是经性能验证的“两基因分类器”。v1.3增加 **NRGN辅助证据**，来自Wang 2024的Cluster cell-type annotation方法段；不改变核心路径，不因NRGN阳性自动补齐缺失核心。其余核心组成员可增强一致性，不算独立验证。
 
 **竞争检查：** 分别比较少突/OPC 的 SOX10、PDGFRA、PLP1、MBP、MOG，星形胶质的 AQP4、GJA1、ALDH1L1、SLC1A2，以及免疫/血管面板。零散髓鞘 RNA 不单独否定神经元。
 

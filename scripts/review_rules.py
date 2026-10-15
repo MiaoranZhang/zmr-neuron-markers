@@ -11,7 +11,7 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RULEBOOK_VERSION = "1.2.0"
+RULEBOOK_VERSION = "1.3.0"
 STATUSES = {"pass", "fail", "unknown"}
 GENE_STATES = {"supported", "not_supported", "not_assayed", "undetermined"}
 GATES = ("applicability", "data_quality", "discrimination", "conflict_review")
@@ -58,7 +58,7 @@ def validate_rules(root=ROOT, rules=None, panels=None, assertion_rows=None):
     """Validate structure and catalog provenance, not biological performance.
 
     Optional panels/assertion_rows support isolated synthetic behavioral tests.
-    Production invocation checks the frozen 37-panel, 74-gene starter catalog.
+    Production invocation checks the versioned panel and gene counts recorded in the manifest.
     """
     root = Path(root)
     if rules is None:
@@ -87,8 +87,8 @@ def validate_rules(root=ROOT, rules=None, panels=None, assertion_rows=None):
             positive_traced[row["panel_id"]].add(row["gene_symbol_raw"])
     catalog_genes = set().union(*traced.values())
     if production_catalog:
-        _require(len(panel_ids) == 37 and len(catalog_genes) == 74,
-                 "Expected the version 1.1 frozen 37-panel, 74-gene catalog")
+        _require(len(panel_ids) == manifest["expected_n_rules"] and len(catalog_genes) == manifest["expected_n_genes"],
+                 "Catalog size differs from current version manifest")
     _require(isinstance(rules, list) and bool(rules), "Rules must be a nonempty array")
     _require(all(isinstance(r, dict) for r in rules), "Each rule must be an object")
     ids = [r.get("id") for r in rules]
@@ -163,7 +163,7 @@ def validate_rules(root=ROOT, rules=None, panels=None, assertion_rows=None):
         fallback = rule["fallback"]
         _require(isinstance(fallback, dict) and all(_text(fallback.get(k)) for k in
                  ("missing_core", "strong_conflict", "fallback_label")), f"{rid}: invalid fallback")
-        _require(rule["rescue_routes"] == [], f"{rid}: unvalidated rescue routes are prohibited in v1.1")
+        _require(rule["rescue_routes"] == [], f"{rid}: unvalidated rescue routes are prohibited")
         _require(rule["validation_status"] == "curated_unbenchmarked",
                  f"{rid}: unsupported biological validation claim")
         _require(_text(rule["notes"]) or _strings(rule["notes"]), f"{rid}: empty notes")

@@ -4,7 +4,7 @@
 
 本包整合**资源的使用方式与证据结构**，不是把所有公开 marker 合并成一个自动分类器。包含分层人工精选面板、来源登记、来源冲突核验、基因可测性审计和上游规则导入器。完整上游数据库不随包再分发，参考图谱不随包下载。没有患者数据、项目细胞矩阵、供者信息或私有分析结果。
 
-**当前规则版本：1.2.0。** [逐类型规则总则](references/rulebook.md) → [谱系与递质](references/rules-identity.md) → [区域亚型与程序](references/rules-contextual.md)。37 个既有面板均有核心组合、辅助证据、冲突检查、High 条件与降级路径。最终身份以正式 cluster/subcluster 整体鉴定为准，不再逐细胞独立定名；成员标签来自 cluster_id 关联，逐细胞表达和参考预测仅用于辅助核验。程序面板不等于独立细胞类型；暂无经过独立评估的缺失补救组合。
+**当前规则版本：1.3.0。** [逐类型规则总则](references/rulebook.md) → [谱系与递质](references/rules-identity.md) → [区域亚型与程序](references/rules-contextual.md)。39个面板、77个基因均有来源与用途记录。NRGN新增为辅助；RIT2和GALNTL6分别登记为文献支持的表达程序，见[新增规则](references/rules-study-programs.md)。最终身份以正式cluster/subcluster整体鉴定为准，成员统一继承cluster标签；逐细胞表达与参考仅辅助核验。程序面板不等于固定细胞类型，暂无经过独立评估的缺失补救组合。
 
 ## 使用
 
@@ -17,7 +17,8 @@
 ## 文件
 
 - `assets/curated_panels.json`、`assets/curated_marker_assertions.tsv`：本项目原创组织的精选审阅面板与逐基因事实索引，不是上游原始规则全文。
-- `assets/source_registry.json`：六类资源（七个来源ID）、论文、固定 commit、使用边界和许可状态。
+- `assets/source_registry.json`：8个来源ID及其论文、固定commit、使用边界和许可状态。
+- [marker文献索引](references/marker-literature.md)、`assets/marker_literature.tsv`：全部77个基因的逐来源参考文献、DOI、定位及实际用途；原始研究与数据库聚合来源分别标记。
 - `assets/source_conflicts.tsv`：不能盲目合并的具体条目。
 - `assets/rules/`、`assets/rulebook_manifest.json`：与面板一一对应的原创审阅规则，保留来源组合与编辑推论的区别。
 - `references/`：鉴定流程、来源指南和数据字段。

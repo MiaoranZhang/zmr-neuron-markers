@@ -51,7 +51,7 @@ class ReviewBehavior(unittest.TestCase):
         self.assertEqual(result["review_grade"], "High")
         self.assertFalse(result["biological_classifier_validated"])
         self.assertFalse(result["writes_cell_labels"])
-        self.assertEqual(result["rulebook_version"], "1.2.0")
+        self.assertEqual(result["rulebook_version"], "1.3.0")
         self.assertIsNone(result["fallback_guidance"])
 
     def test_high_requires_reviewer_and_valid_calendar_date(self):

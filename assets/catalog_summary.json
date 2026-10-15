@@ -1,8 +1,8 @@
 {
-  "n_panels": 37,
-  "n_distinct_genes": 74,
-  "n_panel_gene_roles": 114,
-  "n_source_trace_rows": 128,
+  "n_panels": 39,
+  "n_distinct_genes": 77,
+  "n_panel_gene_roles": 117,
+  "n_source_trace_rows": 131,
   "categories": {
     "lineage": 1,
     "transmitter": 11,
@@ -10,7 +10,8 @@
     "da_program": 4,
     "neuropeptide_program": 5,
     "non_neuronal_guard": 7,
-    "maturation_program": 1
+    "maturation_program": 1,
+    "neuronal_expression_program": 2
   },
   "complete_upstream_catalogs_bundled": false,
   "expression_reference_downloaded": false,

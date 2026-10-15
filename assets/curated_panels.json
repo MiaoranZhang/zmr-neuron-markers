@@ -1,44 +1,805 @@
 {
-  "schema_version":"1.0",
-  "curation_date":"2026-10-14",
-  "interpretation":"Original curated review panels: listed genes are evidence to inspect, not automatic all-positive calling rules; no calibrated classifier is supplied.",
-  "panels":[
-    {"id":"neuronal-background","label":"Pan-neuronal program","category":"lineage","species":"human","stage":"adult","regions":["all"],"positive":["RBFOX3","MAP2","SNAP25","STMN2","SYP","TUBB3"],"negative":[],"sources":["panglaodb","siletti_rules","sctype"],"notes":"Independent curated union for background review, not a literal author rule. RBFOX3 is not universal; assess a coherent multi-gene program and non-neuronal guards. Catalog facts include mixed-source/species priors, not adult-human specificity validation."},
-    {"id":"da-core","label":"Dopaminergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["TH","DDC","SLC6A3","SLC18A2"],"negative":["DBH","PNMT"],"sources":["kamath_2022","siletti_rules"],"notes":"Kamath DA triad TH/SLC6A3/SLC18A2 and Siletti TH/DDC/SLC6A3 are complementary source-local panels, not an obligatory four-gene single-cell intersection. DBH/PNMT are contextual catecholamine conflicts, not literal Siletti DA negatives."},
-    {"id":"gaba-core","label":"GABAergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["GAD1","GAD2","SLC32A1"],"negative":["SLC6A5"],"sources":["siletti_rules"],"notes":"Original GABA1/GABA2 are alternative source rules. SLC6A5 suggests glycinergic context, not an automatic exclusion of every co-transmitting cell."},
-    {"id":"glut-vglut1","label":"SLC17A7-associated glutamatergic program","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["SLC17A7"],"negative":[],"sources":["siletti_rules"],"notes":"Single transporter program; require neuronal background and cellular concordance before naming identity."},
-    {"id":"glut-vglut2","label":"SLC17A6-associated glutamatergic program","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["SLC17A6"],"negative":[],"sources":["siletti_rules"],"notes":"Does not alone specify brain-region or projection class."},
-    {"id":"glut-vglut3","label":"SLC17A8-associated program","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["SLC17A8"],"negative":[],"sources":["siletti_rules"],"notes":"Preserve as a transmitter-related program; do not equate single-gene expression with an exclusive excitatory class."},
-    {"id":"glycinergic","label":"Glycinergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["SLC6A5","SLC32A1"],"negative":[],"sources":["siletti_rules"],"notes":"Inspect jointly with GAD programs, neuronal background and appropriate anatomy."},
-    {"id":"serotonergic","label":"Serotonergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["TPH2","FEV","DDC"],"negative":[],"sources":["siletti_rules"],"notes":"TPH2 adult-brain synthesis evidence; do not substitute the ScType TPH1 entry without contextual review. Optional SLC6A4 evidence must retain its separate source."},
-    {"id":"cholinergic","label":"Cholinergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["CHAT","SLC5A7","SLC18A3"],"negative":[],"sources":["siletti_rules","sctype"],"notes":"Curated synthesis/uptake/vesicular program. Siletti and ScType source combinations differ; ACHE alone is not sufficient."},
-    {"id":"noradrenergic","label":"Noradrenergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["DBH","TH","DDC"],"negative":[],"sources":["siletti_rules"],"notes":"DBH contextualizes TH-positive cells; do not call every TH-positive cell DA."},
-    {"id":"adrenergic","label":"Adrenergic candidate","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["PNMT","DBH","TH","DDC"],"negative":[],"sources":["siletti_rules"],"notes":"Rare/anatomically constrained candidate; require multi-gene and matched-reference evidence."},
-    {"id":"histaminergic","label":"HDC-associated provisional program","category":"transmitter","species":"human","stage":"adult","regions":["all"],"positive":["HDC"],"negative":[],"sources":["siletti_rules"],"notes":"Source rule is single-gene; in heterogeneous or low-depth query report provisional HDC-associated program, not a settled type."},
-    {"id":"cortical-pvalb","label":"PVALB-associated cortical interneuron candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["cortex"],"positive":["PVALB","LHX6","DLX1","GAD2","FOXG1"],"negative":[],"sources":["siletti_rules"],"notes":"Adapted review subset, not complete author rule. Not a general midbrain PVALB classifier."},
-    {"id":"cortical-sst","label":"SST-associated cortical interneuron candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["cortex"],"positive":["SST","LHX6","DLX1","GAD2","FOXG1"],"negative":["ADARB2"],"sources":["siletti_rules"],"notes":"Contextual cortical rule; source negative distinguishes a source-defined subgroup and is not universal SST biology."},
-    {"id":"cortical-vip","label":"VIP-associated cortical interneuron candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["cortex"],"positive":["VIP","ADARB2","CXCL14","DLX1","GAD2","FOXG1"],"negative":[],"sources":["siletti_rules"],"notes":"Adult cortical context; peptide expression outside cortex is not this identity."},
-    {"id":"cortical-lamp5","label":"LAMP5-associated cortical interneuron candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["cortex"],"positive":["LAMP5","ADARB2","CXCL14","GAD2","FOXG1"],"negative":["LHX6"],"sources":["siletti_rules"],"notes":"Separate LAMP5/LHX6-associated context; do not make generic LAMP5-positive calls from one gene."},
-    {"id":"striatal-d1","label":"D1 MSN-associated candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["striatum"],"positive":["DRD1","GPR88","RGS9","FOXP1","SLC32A1","FOXG1"],"negative":[],"sources":["siletti_rules"],"notes":"Adapted review subset; require striatal origin and neuronal/inhibitory background. DRD1 alone does not prove MSN identity."},
-    {"id":"striatal-d2","label":"D2 MSN-associated candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["striatum"],"positive":["DRD2","GPR88","RGS9","FOXP1","SLC32A1","FOXG1"],"negative":[],"sources":["siletti_rules"],"notes":"Not a midbrain dopamine-neuron marker panel; dopamine receptor expression is not dopamine synthesis identity."},
-    {"id":"cerebellar-purkinje","label":"Purkinje-associated candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["cerebellum"],"positive":["PCP2","SKOR2","PVALB","GAD2"],"negative":[],"sources":["siletti_rules"],"notes":"Author rule cites mouse cerebellar evidence; validate in human query. PVALB is not uniquely cortical."},
-    {"id":"cerebellar-granule","label":"Cerebellar granule-associated candidate","category":"regional_subtype","species":"human","stage":"adult","regions":["cerebellum"],"positive":["CBLN1","CBLN3","GABRA6"],"negative":[],"sources":["siletti_rules"],"notes":"Source categories contain a Glial metadata inconsistency despite neuronal subtype location; retain the conflict, do not copy that taxonomy automatically."},
-    {"id":"da-sox6","label":"SOX6-associated DA program","category":"da_program","species":"human","stage":"adult","regions":["substantia_nigra","midbrain"],"positive":["SOX6"],"negative":[],"sources":["kamath_2022"],"notes":"Assess only after DA core identity. Not proof of SNpc location or vulnerability."},
-    {"id":"da-calb1","label":"CALB1-associated DA program","category":"da_program","species":"human","stage":"adult","regions":["substantia_nigra","midbrain"],"positive":["CALB1"],"negative":[],"sources":["kamath_2022"],"notes":"DA-parent-restricted program, not a standalone cell type or PD protection claim."},
-    {"id":"da-sox6-agtr1","label":"SOX6/AGTR1-associated DA candidate","category":"da_program","species":"human","stage":"adult","regions":["substantia_nigra"],"positive":["SOX6","AGTR1"],"negative":[],"sources":["kamath_2022"],"notes":"Specific study signature after DA confirmation; query expression is not independent evidence of disease vulnerability or anatomical tier."},
-    {"id":"da-calb1-tmem200a","label":"CALB1/TMEM200A-associated DA candidate","category":"da_program","species":"human","stage":"adult","regions":["substantia_nigra"],"positive":["CALB1","TMEM200A"],"negative":[],"sources":["kamath_2022"],"notes":"Source-specific program requiring DA parent and matched human SNpc reference."},
-    {"id":"peptide-hcrt","label":"HCRT peptide program","category":"neuropeptide_program","species":"human","stage":"adult","regions":["all"],"positive":["HCRT"],"negative":[],"sources":["siletti_rules"],"notes":"Not sufficient to name orexin neurons in a midbrain dataset; inspect anatomy, ambient RNA and cellular concordance."},
-    {"id":"peptide-pmch","label":"PMCH peptide program","category":"neuropeptide_program","species":"human","stage":"adult","regions":["all"],"positive":["PMCH"],"negative":[],"sources":["siletti_rules"],"notes":"Keep separate from transmitter identity; HCRT/PMCH cluster co-occurrence does not prove one co-expressing type."},
-    {"id":"peptide-npy","label":"NPY peptide program","category":"neuropeptide_program","species":"human","stage":"adult","regions":["all"],"positive":["NPY"],"negative":[],"sources":["siletti_rules"],"notes":"Shared peptide program; not a unique neuron identity."},
-    {"id":"peptide-sst","label":"SST peptide program","category":"neuropeptide_program","species":"human","stage":"adult","regions":["all"],"positive":["SST"],"negative":[],"sources":["siletti_rules"],"notes":"Distinct from the cortex-restricted SST interneuron panel."},
-    {"id":"peptide-vip","label":"VIP peptide program","category":"neuropeptide_program","species":"human","stage":"adult","regions":["all"],"positive":["VIP"],"negative":[],"sources":["siletti_rules"],"notes":"Distinct from cortex-restricted VIP interneuron identity."},
-    {"id":"oligo-guard","label":"Oligodendroglial identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["PLP1","MBP","MOG","SOX10"],"negative":["PDGFRA"],"sources":["siletti_rules","sctype"],"notes":"Coherent lineage evidence is needed; scattered myelin RNA is not enough. SOX10 is a curated extension and is shared with other glia."},
-    {"id":"opc-guard","label":"OPC identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["SOX10","PDGFRA"],"negative":[],"sources":["siletti_rules"],"notes":"Do not infer OPC from LHFPL3 alone, even though it appears in ScType Brain OPC row."},
-    {"id":"astro-guard","label":"Astroglial identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["AQP4","GJA1","ALDH1L1","SLC1A2"],"negative":["FOXJ1"],"sources":["siletti_rules","sctype"],"notes":"Curated multi-source review program; compare ependymal/vascular programs and neuronal background."},
-    {"id":"myeloid-guard","label":"Myeloid identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["TYROBP","DOCK8"],"negative":[],"sources":["siletti_rules"],"notes":"Broad myeloid review, deliberately not named microglia. Separate CD163/MRC1/F13A1 macrophage and homeostatic microglial evidence."},
-    {"id":"macrophage-guard","label":"Macrophage-associated identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["CD163","MRC1","F13A1"],"negative":[],"sources":["siletti_rules"],"notes":"Contextual macrophage/BAM candidate, not interchangeable with microglia."},
-    {"id":"endothelial-guard","label":"Endothelial identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["CLDN5","PECAM1","FLT1"],"negative":[],"sources":["siletti_rules"],"notes":"FLT1 alone is shared; vascular lineage should be coherent."},
-    {"id":"pericyte-guard","label":"Pericyte-associated identity conflict","category":"non_neuronal_guard","species":"human","stage":"adult","regions":["all"],"positive":["PDGFRB","CSPG4"],"negative":["MYH11"],"sources":["siletti_rules"],"notes":"CSPG4 is shared with OPC; compare full mural vs oligodendroglial context."},
-    {"id":"immature-program","label":"Immature/developmental neuronal program","category":"maturation_program","species":"human","stage":"unspecified","regions":["all"],"positive":["DCX","NEUROD1","TUBB3"],"negative":[],"sources":["sctype"],"notes":"Supplementary broad panel; does not establish adult neurogenesis or a proliferating neuron type."}
+  "schema_version": "1.0",
+  "curation_date": "2026-10-15",
+  "interpretation": "Original curated review panels: listed genes are evidence to inspect, not automatic all-positive calling rules; no calibrated classifier is supplied.",
+  "panels": [
+    {
+      "id": "neuronal-background",
+      "label": "Pan-neuronal program",
+      "category": "lineage",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "RBFOX3",
+        "MAP2",
+        "SNAP25",
+        "STMN2",
+        "SYP",
+        "TUBB3",
+        "NRGN"
+      ],
+      "negative": [],
+      "sources": [
+        "panglaodb",
+        "siletti_rules",
+        "sctype",
+        "wang_2024"
+      ],
+      "notes": "Independent curated union for background review, not a literal author rule. RBFOX3 is not universal; assess a coherent multi-gene program and non-neuronal guards. Catalog facts include mixed-source/species priors, not adult-human specificity validation. v1.3: NRGN is supporting evidence only, not an added core route or a universal pan-neuronal requirement."
+    },
+    {
+      "id": "da-core",
+      "label": "Dopaminergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "TH",
+        "DDC",
+        "SLC6A3",
+        "SLC18A2"
+      ],
+      "negative": [
+        "DBH",
+        "PNMT"
+      ],
+      "sources": [
+        "kamath_2022",
+        "siletti_rules"
+      ],
+      "notes": "Kamath DA triad TH/SLC6A3/SLC18A2 and Siletti TH/DDC/SLC6A3 are complementary source-local panels, not an obligatory four-gene single-cell intersection. DBH/PNMT are contextual catecholamine conflicts, not literal Siletti DA negatives."
+    },
+    {
+      "id": "gaba-core",
+      "label": "GABAergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "GAD1",
+        "GAD2",
+        "SLC32A1"
+      ],
+      "negative": [
+        "SLC6A5"
+      ],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Original GABA1/GABA2 are alternative source rules. SLC6A5 suggests glycinergic context, not an automatic exclusion of every co-transmitting cell."
+    },
+    {
+      "id": "glut-vglut1",
+      "label": "SLC17A7-associated glutamatergic program",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "SLC17A7"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Single transporter program; require neuronal background and cellular concordance before naming identity."
+    },
+    {
+      "id": "glut-vglut2",
+      "label": "SLC17A6-associated glutamatergic program",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "SLC17A6"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Does not alone specify brain-region or projection class."
+    },
+    {
+      "id": "glut-vglut3",
+      "label": "SLC17A8-associated program",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "SLC17A8"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Preserve as a transmitter-related program; do not equate single-gene expression with an exclusive excitatory class."
+    },
+    {
+      "id": "glycinergic",
+      "label": "Glycinergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "SLC6A5",
+        "SLC32A1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Inspect jointly with GAD programs, neuronal background and appropriate anatomy."
+    },
+    {
+      "id": "serotonergic",
+      "label": "Serotonergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "TPH2",
+        "FEV",
+        "DDC"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "TPH2 adult-brain synthesis evidence; do not substitute the ScType TPH1 entry without contextual review. Optional SLC6A4 evidence must retain its separate source."
+    },
+    {
+      "id": "cholinergic",
+      "label": "Cholinergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "CHAT",
+        "SLC5A7",
+        "SLC18A3"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules",
+        "sctype"
+      ],
+      "notes": "Curated synthesis/uptake/vesicular program. Siletti and ScType source combinations differ; ACHE alone is not sufficient."
+    },
+    {
+      "id": "noradrenergic",
+      "label": "Noradrenergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "DBH",
+        "TH",
+        "DDC"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "DBH contextualizes TH-positive cells; do not call every TH-positive cell DA."
+    },
+    {
+      "id": "adrenergic",
+      "label": "Adrenergic candidate",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "PNMT",
+        "DBH",
+        "TH",
+        "DDC"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Rare/anatomically constrained candidate; require multi-gene and matched-reference evidence."
+    },
+    {
+      "id": "histaminergic",
+      "label": "HDC-associated provisional program",
+      "category": "transmitter",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "HDC"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Source rule is single-gene; in heterogeneous or low-depth query report provisional HDC-associated program, not a settled type."
+    },
+    {
+      "id": "cortical-pvalb",
+      "label": "PVALB-associated cortical interneuron candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "cortex"
+      ],
+      "positive": [
+        "PVALB",
+        "LHX6",
+        "DLX1",
+        "GAD2",
+        "FOXG1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Adapted review subset, not complete author rule. Not a general midbrain PVALB classifier."
+    },
+    {
+      "id": "cortical-sst",
+      "label": "SST-associated cortical interneuron candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "cortex"
+      ],
+      "positive": [
+        "SST",
+        "LHX6",
+        "DLX1",
+        "GAD2",
+        "FOXG1"
+      ],
+      "negative": [
+        "ADARB2"
+      ],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Contextual cortical rule; source negative distinguishes a source-defined subgroup and is not universal SST biology."
+    },
+    {
+      "id": "cortical-vip",
+      "label": "VIP-associated cortical interneuron candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "cortex"
+      ],
+      "positive": [
+        "VIP",
+        "ADARB2",
+        "CXCL14",
+        "DLX1",
+        "GAD2",
+        "FOXG1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Adult cortical context; peptide expression outside cortex is not this identity."
+    },
+    {
+      "id": "cortical-lamp5",
+      "label": "LAMP5-associated cortical interneuron candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "cortex"
+      ],
+      "positive": [
+        "LAMP5",
+        "ADARB2",
+        "CXCL14",
+        "GAD2",
+        "FOXG1"
+      ],
+      "negative": [
+        "LHX6"
+      ],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Separate LAMP5/LHX6-associated context; do not make generic LAMP5-positive calls from one gene."
+    },
+    {
+      "id": "striatal-d1",
+      "label": "D1 MSN-associated candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "striatum"
+      ],
+      "positive": [
+        "DRD1",
+        "GPR88",
+        "RGS9",
+        "FOXP1",
+        "SLC32A1",
+        "FOXG1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Adapted review subset; require striatal origin and neuronal/inhibitory background. DRD1 alone does not prove MSN identity."
+    },
+    {
+      "id": "striatal-d2",
+      "label": "D2 MSN-associated candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "striatum"
+      ],
+      "positive": [
+        "DRD2",
+        "GPR88",
+        "RGS9",
+        "FOXP1",
+        "SLC32A1",
+        "FOXG1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Not a midbrain dopamine-neuron marker panel; dopamine receptor expression is not dopamine synthesis identity."
+    },
+    {
+      "id": "cerebellar-purkinje",
+      "label": "Purkinje-associated candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "cerebellum"
+      ],
+      "positive": [
+        "PCP2",
+        "SKOR2",
+        "PVALB",
+        "GAD2"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Author rule cites mouse cerebellar evidence; validate in human query. PVALB is not uniquely cortical."
+    },
+    {
+      "id": "cerebellar-granule",
+      "label": "Cerebellar granule-associated candidate",
+      "category": "regional_subtype",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "cerebellum"
+      ],
+      "positive": [
+        "CBLN1",
+        "CBLN3",
+        "GABRA6"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Source categories contain a Glial metadata inconsistency despite neuronal subtype location; retain the conflict, do not copy that taxonomy automatically."
+    },
+    {
+      "id": "da-sox6",
+      "label": "SOX6-associated DA program",
+      "category": "da_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "substantia_nigra",
+        "midbrain"
+      ],
+      "positive": [
+        "SOX6"
+      ],
+      "negative": [],
+      "sources": [
+        "kamath_2022"
+      ],
+      "notes": "Assess only after DA core identity. Not proof of SNpc location or vulnerability."
+    },
+    {
+      "id": "da-calb1",
+      "label": "CALB1-associated DA program",
+      "category": "da_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "substantia_nigra",
+        "midbrain"
+      ],
+      "positive": [
+        "CALB1"
+      ],
+      "negative": [],
+      "sources": [
+        "kamath_2022"
+      ],
+      "notes": "DA-parent-restricted program, not a standalone cell type or PD protection claim."
+    },
+    {
+      "id": "da-sox6-agtr1",
+      "label": "SOX6/AGTR1-associated DA candidate",
+      "category": "da_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "substantia_nigra"
+      ],
+      "positive": [
+        "SOX6",
+        "AGTR1"
+      ],
+      "negative": [],
+      "sources": [
+        "kamath_2022"
+      ],
+      "notes": "Specific study signature after DA confirmation; query expression is not independent evidence of disease vulnerability or anatomical tier."
+    },
+    {
+      "id": "da-calb1-tmem200a",
+      "label": "CALB1/TMEM200A-associated DA candidate",
+      "category": "da_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "substantia_nigra"
+      ],
+      "positive": [
+        "CALB1",
+        "TMEM200A"
+      ],
+      "negative": [],
+      "sources": [
+        "kamath_2022"
+      ],
+      "notes": "Source-specific program requiring DA parent and matched human SNpc reference."
+    },
+    {
+      "id": "peptide-hcrt",
+      "label": "HCRT peptide program",
+      "category": "neuropeptide_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "HCRT"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Not sufficient to name orexin neurons in a midbrain dataset; inspect anatomy, ambient RNA and cellular concordance."
+    },
+    {
+      "id": "peptide-pmch",
+      "label": "PMCH peptide program",
+      "category": "neuropeptide_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "PMCH"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Keep separate from transmitter identity; HCRT/PMCH cluster co-occurrence does not prove one co-expressing type."
+    },
+    {
+      "id": "peptide-npy",
+      "label": "NPY peptide program",
+      "category": "neuropeptide_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "NPY"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Shared peptide program; not a unique neuron identity."
+    },
+    {
+      "id": "peptide-sst",
+      "label": "SST peptide program",
+      "category": "neuropeptide_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "SST"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Distinct from the cortex-restricted SST interneuron panel."
+    },
+    {
+      "id": "peptide-vip",
+      "label": "VIP peptide program",
+      "category": "neuropeptide_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "VIP"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Distinct from cortex-restricted VIP interneuron identity."
+    },
+    {
+      "id": "oligo-guard",
+      "label": "Oligodendroglial identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "PLP1",
+        "MBP",
+        "MOG",
+        "SOX10"
+      ],
+      "negative": [
+        "PDGFRA"
+      ],
+      "sources": [
+        "siletti_rules",
+        "sctype"
+      ],
+      "notes": "Coherent lineage evidence is needed; scattered myelin RNA is not enough. SOX10 is a curated extension and is shared with other glia."
+    },
+    {
+      "id": "opc-guard",
+      "label": "OPC identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "SOX10",
+        "PDGFRA"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Do not infer OPC from LHFPL3 alone, even though it appears in ScType Brain OPC row."
+    },
+    {
+      "id": "astro-guard",
+      "label": "Astroglial identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "AQP4",
+        "GJA1",
+        "ALDH1L1",
+        "SLC1A2"
+      ],
+      "negative": [
+        "FOXJ1"
+      ],
+      "sources": [
+        "siletti_rules",
+        "sctype"
+      ],
+      "notes": "Curated multi-source review program; compare ependymal/vascular programs and neuronal background."
+    },
+    {
+      "id": "myeloid-guard",
+      "label": "Myeloid identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "TYROBP",
+        "DOCK8"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Broad myeloid review, deliberately not named microglia. Separate CD163/MRC1/F13A1 macrophage and homeostatic microglial evidence."
+    },
+    {
+      "id": "macrophage-guard",
+      "label": "Macrophage-associated identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "CD163",
+        "MRC1",
+        "F13A1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "Contextual macrophage/BAM candidate, not interchangeable with microglia."
+    },
+    {
+      "id": "endothelial-guard",
+      "label": "Endothelial identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "CLDN5",
+        "PECAM1",
+        "FLT1"
+      ],
+      "negative": [],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "FLT1 alone is shared; vascular lineage should be coherent."
+    },
+    {
+      "id": "pericyte-guard",
+      "label": "Pericyte-associated identity conflict",
+      "category": "non_neuronal_guard",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "PDGFRB",
+        "CSPG4"
+      ],
+      "negative": [
+        "MYH11"
+      ],
+      "sources": [
+        "siletti_rules"
+      ],
+      "notes": "CSPG4 is shared with OPC; compare full mural vs oligodendroglial context."
+    },
+    {
+      "id": "immature-program",
+      "label": "Immature/developmental neuronal program",
+      "category": "maturation_program",
+      "species": "human",
+      "stage": "unspecified",
+      "regions": [
+        "all"
+      ],
+      "positive": [
+        "DCX",
+        "NEUROD1",
+        "TUBB3"
+      ],
+      "negative": [],
+      "sources": [
+        "sctype"
+      ],
+      "notes": "Supplementary broad panel; does not establish adult neurogenesis or a proliferating neuron type."
+    },
+    {
+      "id": "rit2-enriched-program",
+      "label": "RIT2-enriched neuronal expression program",
+      "category": "neuronal_expression_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "midbrain",
+        "substantia_nigra"
+      ],
+      "positive": [
+        "RIT2"
+      ],
+      "negative": [],
+      "sources": [
+        "wang_2024"
+      ],
+      "notes": "Study-associated expression program; neuronal parent and comparative enrichment required. Not a fixed cell type, exclusive identity, DA rescue or mandatory RIT2/GALNTL6 coexpression combination."
+    },
+    {
+      "id": "galntl6-associated-program",
+      "label": "GALNTL6-associated neuronal expression program",
+      "category": "neuronal_expression_program",
+      "species": "human",
+      "stage": "adult",
+      "regions": [
+        "midbrain",
+        "substantia_nigra"
+      ],
+      "positive": [
+        "GALNTL6"
+      ],
+      "negative": [],
+      "sources": [
+        "wang_2024"
+      ],
+      "notes": "Study-associated expression program; neuronal parent and comparative enrichment required. Not a fixed cell type, exclusive identity, DA rescue or mandatory RIT2/GALNTL6 coexpression combination."
+    }
   ]
 }
