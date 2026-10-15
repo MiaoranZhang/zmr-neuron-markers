@@ -21,7 +21,13 @@
 
 category 分为 lineage、transmitter、regional_subtype、da_program、neuropeptide_program、non_neuronal_guard、maturation_program。`regions=["all"]` 表示用于宽泛谱系/程序筛查，不保证每个基因在所有脑区都有相同特异性。支持程序不等于身份。
 
-## v1.1 逐类型规则
+## v1.2.0 鉴定单位
+
+最终 `celltype_major`、`transmitter_class`、`celltype_subtype` 从正式 cluster/subcluster 的审阅表按 `annotation_unit_id` 关联，`annotation_basis=cluster_inherited`。保存 `annotation_unit_type=cluster`、`annotation_rulebook_version=1.2.0`、各层级 `cluster_confidence_*`；成员细胞不另行获得独立身份置信度，若保留通用 confidence 字段，须明确 `confidence_scope=cluster`。同一正式鉴定单位在同一身份层级只能有一个最终标签。
+
+逐细胞来源、实测 marker、参考预测和冲突标志独立保留，仅用于辅助核验，不覆盖最终身份。正式子聚类须保留父 cluster_id、subcluster_id、方法参数和稳定性/marker/供者审阅记录；按 marker/参考挑出的表达分组不算正式 subcluster。
+
+## 逐类型规则结构
 
 `assets/rulebook_manifest.json` 登记版本、规则文件、公共门槛及验证状态；`assets/rules/*.json` 每条对应一个既有 panel_id。
 
@@ -39,11 +45,11 @@ category 分为 lineage、transmitter、regional_subtype、da_program、neuropep
 
 上述逻辑作用于已经审阅的表达证据，而非 counts 是否大于零。`supported` 必须说明检测层、比较对象、表达富集/比例和归属依据；缺失本身不能改写为 supported。High 的定义及复现/验证分离规则见[规则总则](rulebook.md)。
 
-逐细胞和簇级证据分别保存，不能仅更改 unit_id 就把簇级判断复制为单细胞证据。真正有经过验证的参考预测时，另存预测标签、映射质量和推断来源；它不是人工填写一个核心 marker 阳性的理由。
+逐细胞和簇级证据分别保存。成员继承统一簇标签不等于获得逐细胞实测核心支持，不能仅更改 unit_id 就把簇级判断复制为单细胞证据。参考预测另存候选、映射质量和推断来源，用于簇级核验；它不是逐细胞最终身份或人工填写核心 marker 阳性的理由。
 
 审阅输入由 `python scripts/review_rules.py --template RULE_ID` 生成，以当前模板为准。每个门槛和附加检查包含 pass/fail/unknown 与证据引用；每条基因证据包含状态和实际归属对象。操作者审阅内容的真实性不由检查器验证。结果不直接写回细胞元数据；实际应用需保存原始标签、新标签、review_grade、来源及冲突，再决定报告粒度。
 
-输入必须声明 `rulebook_version="1.1.0"`；缺失或不同版本会被拒绝，避免旧审阅记录静默套用新规则。规则升级后需重新核对证据，不能只替换版本号。
+输入必须声明 `rulebook_version="1.2.0"`；缺失或不同版本会被拒绝，避免旧审阅记录静默套用新规则。identity 审阅要求 `unit_type="cluster"`，包含已正式聚类的 subcluster；cell 单位仅允许 program 诊断。规则升级后需重新核对证据，不能只替换版本号。
 
 `reviewer` 和 `review_date` 用于记录审核人及 `YYYY-MM-DD` 日期；空模板可以检查缺口，但这两项不完整时不能得到 High。Low 的建议标签固定为 `Unknown/Uncertain`，NotApplicable 的建议标签为空；父级记录只保存证据状态，不会在质量失败或谱系冲突后自动继承。核心满足和技术审阅完成的记录也不等同于真实性已被独立验证。
 

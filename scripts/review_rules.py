@@ -11,7 +11,7 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-RULEBOOK_VERSION = "1.1.0"
+RULEBOOK_VERSION = "1.2.0"
 STATUSES = {"pass", "fail", "unknown"}
 GENE_STATES = {"supported", "not_supported", "not_assayed", "undetermined"}
 GATES = ("applicability", "data_quality", "discrimination", "conflict_review")
@@ -242,6 +242,9 @@ def review_evidence(rule, evidence):
     _check_rulebook_version(evidence.get("rulebook_version"))
     _require(evidence.get("rule_id") == rule["id"], "Evidence rule ID mismatch")
     _require(evidence.get("unit_type") in {"cell", "cluster"}, "unit_type must be cell or cluster")
+    if rule["claim_kind"] == "identity":
+        _require(evidence.get("unit_type") == "cluster",
+                 "Identity review requires a formal cluster/subcluster; per-cell identity assignment is disabled")
     _require(_text(evidence.get("unit_id")), "A nonempty unit_id is required")
     for key in ("species", "stage", "region"):
         _require(isinstance(evidence.get(key), str), f"{key} must be a string")

@@ -1,6 +1,10 @@
 {
   "schema_version": "1.1",
-  "rulebook_version": "1.1.0",
+  "rulebook_version": "1.2.0",
+  "identity_annotation_unit": "formal_cluster_or_subcluster",
+  "per_cell_identity_assignment": false,
+  "cell_identity_labels": "inherited_by_annotation_unit_id",
+  "per_cell_expression_and_reference_role": "auxiliary_diagnostics_only",
   "curation_date": "2026-10-15",
   "rule_files": ["assets/rules/identity.json", "assets/rules/contextual.json"],
   "scope": "One original review rule per existing curated panel; not an exhaustive adult-brain taxonomy",

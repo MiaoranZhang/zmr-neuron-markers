@@ -7,6 +7,12 @@ description: "Annotate and audit adult human brain neurons from scRNA-seq or snR
 
 为成年人人脑神经元建立可追溯、分层且允许拒绝赋名的鉴定证据。适用于成人 PD 单细胞/单核数据；其他物种、发育阶段必须重新核验。v1.1 为现有 37 个面板配置核心、辅助、冲突和降级规则；这是未经过独立队列准确率评估的审阅体系，不是经过验证的分类器。
 
+## cluster 整体鉴定（v1.2.0）
+
+最终身份以正式 cluster（或经重新降维、聚类后审阅的 subcluster）为单位，不再逐细胞独立定名。综合未整合表达的核心组合、表达比例与效应量、群内一致性、供者/数据集复现、竞争谱系及匹配参考，先形成 cluster 注释表，再按 cluster_id 将统一标签关联到成员细胞。写回的标签须注明 `annotation_basis=cluster_inherited`、鉴定单位和规则版本；簇级置信度不表示每个成员都实测满足核心或具有相同的个体置信度。
+
+逐细胞 marker 检出、参考预测、质量及冲突只作辅助证据和审计字段，不覆盖 cluster 身份，不凭单个细胞未检出核心就改为 Unknown，也不把按 marker/参考筛出的表达小组当成正式 subcluster。若簇内存在不能解释的竞争身份或明显异质性，在相应层级保留未定；需要细分时先正式子聚类并核验稳定性、marker 和供者构成。主注释 UMAP、DotPlot、组成统计使用 cluster 注释；逐细胞诊断图明确标为辅助证据。原作者逐细胞标签仍可用于来源核验及初始提取。
+
 ## 先选任务模式
 
 - **查基因集／整理资源**：读取 [资源说明](references/resource-guide.md)、`assets/source_registry.json` 和 `assets/curated_panels.json`。根据物种、阶段、脑区、层级选面板，不将来源直接取并集。
@@ -16,7 +22,7 @@ description: "Annotate and audit adult human brain neurons from scRNA-seq or snR
 
 ## 必须保持的科学边界
 
-1. 原作者标签、cluster 标签、逐细胞新身份、参考预测分别保存。不要将作者初筛标签或参考预测改称真实测量。
+1. 原作者标签、cluster 鉴定、成员继承标签、逐细胞辅助参考预测分别保存。不要将作者初筛标签或参考预测改称真实测量；最终身份遵循上述 cluster 整体鉴定规则。
 2. 身份证据使用未整合 RNA 表达；counts、标准化表达及 Harmony/CCA 表示保持分离。marker 基因未被某数据集测量不等于零表达。
 3. 先确认多基因神经元程序及排除性谱系，再判递质，再判区域亚型。程序单独记录；神经肽/受体在匹配解剖和完整证据下可支持身份，但单基因程序不自动升格为类型。
 4. 使用原始稳定 ID 到 symbol 的可追溯映射；歧义 symbol 不任意合并。不得仅把大小写转换当作鼠到人同源映射。

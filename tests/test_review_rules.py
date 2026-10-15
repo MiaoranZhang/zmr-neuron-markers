@@ -32,16 +32,16 @@ def fixture():
 def evidence(rule=None):
     rule = rule or fixture()
     result = MOD.evidence_template(rule)
-    result.update(unit_type="cell", unit_id="synthetic-1", species="human", stage="adult", region="midbrain",
+    result.update(unit_type="cluster", unit_id="synthetic-1", species="human", stage="adult", region="midbrain",
                   reviewer="synthetic-reviewer", review_date="2026-10-15")
     for gene, row in result["gene_evidence"].items():
-        row.update(unit_type="cell", unit_id="synthetic-1", evidence_ref="synthetic/manual-review",
+        row.update(unit_type="cluster", unit_id="synthetic-1", evidence_ref="synthetic/manual-review",
                    state="supported" if gene in {"GAD1", "SLC32A1"} else "undetermined")
     for row in list(result["gates"].values()) + result["rule_checks"]:
         row.update(status="pass", evidence_refs=["synthetic/review"])
     if result["parent_evidence"]:
         result["parent_evidence"].update(confidence="High", reviewed_record_id="parent-record",
-            unit_type="cell", unit_id="synthetic-1", evidence_refs=["synthetic/parent"])
+            unit_type="cluster", unit_id="synthetic-1", evidence_refs=["synthetic/parent"])
     return result
 
 
@@ -51,7 +51,7 @@ class ReviewBehavior(unittest.TestCase):
         self.assertEqual(result["review_grade"], "High")
         self.assertFalse(result["biological_classifier_validated"])
         self.assertFalse(result["writes_cell_labels"])
-        self.assertEqual(result["rulebook_version"], "1.1.0")
+        self.assertEqual(result["rulebook_version"], "1.2.0")
         self.assertIsNone(result["fallback_guidance"])
 
     def test_high_requires_reviewer_and_valid_calendar_date(self):
@@ -126,7 +126,7 @@ class ReviewBehavior(unittest.TestCase):
                 self.assertTrue(result["parent_review"]["requires_reassessment_before_reuse"])
 
     def test_missing_or_old_rulebook_version_rejected(self):
-        for version in (None, "1.0.0", "1.2.0"):
+        for version in (None, "1.0.0", "1.1.0"):
             ev = evidence()
             ev["rulebook_version"] = version
             with self.subTest(version=version), self.assertRaisesRegex(ValueError, "version"):
@@ -216,19 +216,38 @@ class ReviewBehavior(unittest.TestCase):
         rule = fixture()
         rule["parent"] = {"panel_id": "neuronal-background", "minimum_confidence": "High"}
         for field, value in [("confidence", "Moderate"), ("panel_id", "da-core"),
-                             ("unit_type", "cluster"), ("unit_id", "other"),
+                             ("unit_type", "cell"), ("unit_id", "other"),
                              ("evidence_refs", []), ("reviewed_record_id", "")]:
             ev = evidence(rule)
             ev["parent_evidence"][field] = value
             with self.subTest(field=field):
                 self.assertEqual(MOD.review_evidence(rule, ev)["review_grade"], "Moderate")
 
-    def test_cluster_evidence_cannot_be_promoted_to_cell(self):
+    def test_single_cell_evidence_cannot_stand_in_for_whole_cluster(self):
         ev = evidence()
-        ev["gene_evidence"]["SLC32A1"]["unit_type"] = "cluster"
+        ev["gene_evidence"]["SLC32A1"]["unit_type"] = "cell"
         result = MOD.review_evidence(fixture(), ev)
         self.assertEqual(result["review_grade"], "Moderate")
         self.assertEqual(result["ignored_supported_gene_evidence"]["SLC32A1"], "different_review_unit")
+
+    def test_per_cell_identity_rejected_even_with_complete_review(self):
+        ev = evidence()
+        ev['unit_type'] = 'cell'
+        for row in ev['gene_evidence'].values():
+            row['unit_type'] = 'cell'
+        with self.assertRaisesRegex(ValueError, 'formal cluster'):
+            MOD.review_evidence(fixture(), ev)
+
+    def test_cell_program_diagnostic_does_not_become_identity(self):
+        rule = fixture()
+        rule.update(claim_kind='program', level='program')
+        ev = evidence(rule)
+        ev['unit_type'] = 'cell'
+        for row in ev['gene_evidence'].values():
+            row['unit_type'] = 'cell'
+        result = MOD.review_evidence(rule, ev)
+        self.assertEqual(result['claim_kind'], 'program')
+        self.assertFalse(result['writes_cell_labels'])
 
     def test_cluster_review_can_be_high_for_cluster(self):
         ev = evidence()
