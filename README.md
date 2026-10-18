@@ -16,6 +16,8 @@
 
 ## 文件
 
+- [细胞类型 × 核心/辅助marker及参考来源汇总](references/celltype-marker-tables-v1.3.0.zh-CN.md)：四类总表、39项规则、77个基因与131条逐来源记录；含适用范围、组合依据及竞争marker。整理于2026-10-18，仅补充文档，不改变v1.3.0鉴定规则。
+
 - `assets/curated_panels.json`、`assets/curated_marker_assertions.tsv`：本项目原创组织的精选审阅面板与逐基因事实索引，不是上游原始规则全文。
 - `assets/source_registry.json`：8个来源ID及其论文、固定commit、使用边界和许可状态。
 - [marker文献索引](references/marker-literature.md)、`assets/marker_literature.tsv`：全部77个基因的逐来源参考文献、DOI、定位及实际用途；原始研究与数据库聚合来源分别标记。
