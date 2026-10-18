@@ -6,6 +6,12 @@
 
 **当前规则版本：1.3.0。** [逐类型规则总则](references/rulebook.md) → [谱系与递质](references/rules-identity.md) → [区域亚型与程序](references/rules-contextual.md)。39个面板、77个基因均有来源与用途记录。NRGN新增为辅助；RIT2和GALNTL6分别登记为文献支持的表达程序，见[新增规则](references/rules-study-programs.md)。最终身份以正式cluster/subcluster整体鉴定为准，成员统一继承cluster标签；逐细胞表达与参考仅辅助核验。程序面板不等于固定细胞类型，暂无经过独立评估的缺失补救组合。
 
+## Excel 下载
+
+[下载细胞鉴定 marker 与参考来源 Excel（v1.3.0）](https://github.com/MiaoranZhang/zmr-neuron-markers/raw/refs/heads/main/downloads/zmr-neuron-markers-v1.3.0-marker-tables.zh-CN.xlsx)
+
+包含7个工作表：神经元大类与递质、脑区限制亚型、亚群与表达特征、非神经元排查、规则依据与冲突、参考文献与版本、逐基因来源。覆盖39项规则、77个基因及131条逐来源记录，支持筛选和冻结表头。Excel为2026-10-18的v1.3.0静态快照，不改变规则逻辑；后续规则更新不会自动改写该文件。
+
 ## 使用
 
 下载完整仓库目录，作为 `zmr-neuron-markers` 放入你的 Codex skills 目录；保留 scripts/references/assets/agents 子目录。在新对话中可调用 `$zmr-neuron-markers`。入口是 [SKILL.md](SKILL.md)。
